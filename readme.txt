@@ -16,6 +16,7 @@ The Responsive Mortgage Calculator is a jQuery widget that's designed to fit eas
 __Features__
 
 The calculator allows your website visitors to estimate their mortgage entering:
+
 * the total cost of the of the home,
 * a down payment amount,
 * an interested rate (fixed rate),
@@ -30,10 +31,11 @@ The widget is built with plenty of classes to hook into for styling, so it’s e
 
 = DISCLAIMER =
 
-I do not vouch for the accuracy of this mortgage calculator and any results. It's pretty darn good, but the bank has the final say...
+The calculator is for demonstration purposes only and may not reflect actual numbers for your mortgage.
 
-The calculator is for demonstration purposes only and may not reflect actual numbers for your mortgage. 
 Assumes constant interest rate throughout amortization period; interest calculated semi-annually.
+
+It's pretty darn good, but the bank has the final say...
 
 == Installation ==
 
