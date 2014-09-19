@@ -1,0 +1,93 @@
+.lidd_rmc_form {
+	width: 100%;
+}
+
+.lidd_rmc_input label {
+	display: block;
+}
+
+.lidd_rmc_input input[type="text"] {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	padding: .6em;
+	margin-bottom: 1em;
+	color: #333;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+
+.lidd_rmc_select {
+	display: block;
+	box-sizing: border-box;
+	position: relative;
+	z-index: 100;
+	width: 100%;
+	padding: .35em .5em .35em .5em;
+	margin-bottom: 1em;
+	overflow: hidden;
+	line-height: 1rem;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+
+.lidd_rmc_select select {
+	position: relative;
+	z-index: 1000;
+	width: 110%;
+	border: none;
+	background: none;
+	-webkit-appearance: none;
+}
+
+.lidd_rmc_select select:focus {
+	outline: none;
+}
+
+.lidd_rmc_select:before {
+	content: '';
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 2rem;
+	height: 2rem;
+	background: #ddd;
+}
+
+.lidd_rmc_select:after {
+	content: '';
+	display: block;
+	position: absolute;
+	right: .45rem;
+	top: .625rem;
+	border-top: .5rem solid #333;
+	border-bottom: .5rem solid transparent;
+	border-right: .5rem solid transparent;
+	border-left: .5rem solid transparent;
+}
+
+.lidd_rmc_error {
+	display: block;
+	margin: .25em 0 .5em 0;
+	color: red;
+}
+
+#lidd_rmc_details {
+	position: relative;
+}
+
+#lidd_rmc_inspector {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+#lidd_rmc_summary {
+	box-sizing: border-box;
+	max-width: 30em;
+	padding: 1em 1em 0 1em;
+	color: #333;
+	background: #fff;
+	border: 1px solid #333;
+}
