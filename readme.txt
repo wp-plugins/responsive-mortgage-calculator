@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: liddweaver
-Tags: widget, responsive, jquery
+Tags: real estate, realty, mortgage, mortgage calculator, widget, responsive, jquery
 Requires at least: 3.0.1
 Tested up to: 3.9.2
 Stable tag: 1.0
@@ -15,7 +15,7 @@ The Responsive Mortgage Calculator is a jQuery widget that's designed to fit eas
 
 __Features__
 
-The calculator allows your website visitors to estimate their mortgage entering:
+The calculator allows your website visitors to estimate their mortgage by entering:
 
 * the total cost of the of the home,
 * a down payment amount,
@@ -31,9 +31,7 @@ The widget is built with plenty of classes to hook into for styling, so it’s e
 
 = DISCLAIMER =
 
-The calculator is for demonstration purposes only and may not reflect actual numbers for your mortgage.
-
-Assumes constant interest rate throughout amortization period; interest calculated semi-annually.
+The calculator is for demonstration purposes only and may not reflect actual numbers for your mortgage. Assumes constant interest rate throughout amortization period; interest calculated semi-annually.
 
 It's pretty darn good, but the bank has the final say...
 
