@@ -77,6 +77,37 @@ class lidd_rmc_widget extends WP_Widget {
 	
 }
 
+// Add a shortcode.
+add_shortcode( 'mortgagecalculator', 'lidd_rmc_shortcode' );
+add_shortcode( 'rmc', 'lidd_rmc_shortcode' );
+
+// Callback function for the shortcode.
+function lidd_rmc_shortcode() {
+	
+	// Include the jQuery script.
+	return lidd_rmc_display_form();
+}
+
+// Make sure the stylesheet and jquery is included in the header if the shortcode is called.
+//add_action( 'wp', 'lidd_rmc_detect_shortcode' );
+
+function lidd_rmc_detect_shortcode() {
+	global $post;
+	
+	$pattern = get_shortcode_regex();
+	
+	// Check the content.
+	if ( preg_match_all( '/' . $pattern . '/s', $post->post_content, $matches )
+		&& array_key_exists( 2, $matches ) 
+		&& ( in_array( 'mortgagecalculator', $matches[2] ) || in_array( 'rmc', $matches[2] ) ) ) {
+		
+		// The shortcode is being used, so include the stylesheet.
+		wp_enqueue_style( 'lidd_rmc_style', plugin_dir_url( __FILE__ ) . 'css/style.css', '', '1.0', 'screen' );
+		wp_enqueue_script( 'lidd_rmc', plugin_dir_url( __FILE__) . 'js/lidd_rmc.js', 'jquery', '1.0' );
+		
+	}
+}
+
 // A function to build inputs.
 function lidd_rmc_build_input( $type, $label, $name, $placeholder = null, $options = array() ) {
 	

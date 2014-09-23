@@ -5,7 +5,7 @@ jQuery(document).ready(function() {
 	resultDiv = jQuery('#lidd_rmc_results');
 	summaryDiv = jQuery('#lidd_rmc_summary');
 	
-	jQuery( "#lidd_rmc_form" ).submit(function( event ) {
+	jQuery( ".lidd_rmc_form" ).submit(function( event ) {
 		
 		// Prevent the form from being submitted.
 		event.preventDefault();
@@ -143,7 +143,7 @@ jQuery(document).ready(function() {
 				} else if ( period === 'Weekly' ) {
 					summary += ' and <b class="lidd-b">' + remainder + '</b> weeks';
 				} else {
-					summary += ' and <b class="lidd-b>"' + ( remainder * 2 ) + '</b> weeks';
+					summary += ' and <b class="lidd-b">' + ( remainder * 2 ) + '</b> weeks';
 				}
 			}
 			summary += ', your <b class="lidd-b">' + period + '</b> payment is:</p>';

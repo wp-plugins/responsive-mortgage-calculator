@@ -4,6 +4,7 @@
 
 .lidd_rmc_input label {
 	display: block;
+	margin-bottom: .25em;
 }
 
 .lidd_rmc_input input[type="text"] {
@@ -35,6 +36,7 @@
 	position: relative;
 	z-index: 1000;
 	width: 110%;
+	padding: 0;
 	border: none;
 	background: none;
 	-webkit-appearance: none;
@@ -60,7 +62,7 @@
 	display: block;
 	position: absolute;
 	right: .45rem;
-	top: .625rem;
+	top: .725rem;
 	border-top: .5rem solid #333;
 	border-bottom: .5rem solid transparent;
 	border-right: .5rem solid transparent;
@@ -85,9 +87,9 @@
 
 #lidd_rmc_summary {
 	box-sizing: border-box;
-	max-width: 30em;
+	width: 100%;
 	padding: 1em 1em 0 1em;
 	color: #333;
 	background: #fff;
-	border: 1px solid #333;
+	border: 1px solid #ddd;
 }
