@@ -3,7 +3,7 @@
 Plugin Name: Responsive Mortgage Calculator
 Plugin URI: http://davewilder.ca
 Description: Adds a responsive mortgage calculator widget or using the shortcode [responsive-mortgage-calculator].
-Version: 1.0
+Version: 1.1
 Author: liddweaver
 Author URI: http://davewilder.ca
 License: GPLv2
