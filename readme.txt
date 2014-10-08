@@ -3,7 +3,7 @@ Contributors: liddweaver
 Tags: mortgage, mortgage calculator, realty, realtor, real estate, widget, responsive, jquery
 Requires at least: 3.0.1
 Tested up to: 3.9.2
-Stable tag: 1.1
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,3 +60,14 @@ You can insert the mortgage calculator into a page or post using the short code 
 1. The mortgage calculator fits in the widgets area of your theme and blends right in. The form inputs are styled simply and unobtrusively. The ‘Calculate’ button takes it’s styling from your theme.
 2. The mortgage payment amount is displayed below the ‘Calculate’ button. The circled ‘i’ - the ‘inspector’ icon for Mac fans - is clickable.
 3. A longer summary of the mortgage details is displayed when the ‘inspector’ icon is clicked.
+
+== Changelog ==
+
+= 1.1 =
+
+* Added shortcodes
+
+= 1.1.1 =
+
+* Made sure that JS and CSS are being included when the shortcode is used…
+* Fixed a minor UI bug where the arrow background on the select box was too short.

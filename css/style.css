@@ -53,7 +53,7 @@
 	right: 0;
 	top: 0;
 	width: 2rem;
-	height: 2rem;
+	height: 100%;
 	background: #ddd;
 }
 
@@ -62,7 +62,7 @@
 	display: block;
 	position: absolute;
 	right: .45rem;
-	top: .725rem;
+	top: .75rem;
 	border-top: .5rem solid #333;
 	border-bottom: .5rem solid transparent;
 	border-right: .5rem solid transparent;

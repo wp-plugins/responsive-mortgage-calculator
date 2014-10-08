@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Responsive Mortgage Calculator
-Plugin URI: http://davewilder.ca
-Description: Adds a responsive mortgage calculator widget or using the shortcode [responsive-mortgage-calculator].
-Version: 1.1
+Plugin URI: http://liddweaver.com
+Description: Adds a responsive mortgage calculator widget or using the shortcode [mortgagecalculator].
+Version: 1.1.1
 Author: liddweaver
-Author URI: http://davewilder.ca
+Author URI: http://liddweaver.com
 License: GPLv2
 */
 
@@ -89,7 +89,7 @@ function lidd_rmc_shortcode() {
 }
 
 // Make sure the stylesheet and jquery is included in the header if the shortcode is called.
-//add_action( 'wp', 'lidd_rmc_detect_shortcode' );
+add_action( 'wp', 'lidd_rmc_detect_shortcode' );
 
 function lidd_rmc_detect_shortcode() {
 	global $post;
