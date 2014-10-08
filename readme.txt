@@ -16,6 +16,7 @@ The Responsive Mortgage Calculator is a jQuery widget and shortcode that's desig
 __Features__
 
 The calculator allows your website visitors to estimate their mortgage entering:
+
 * the total cost of the of the home,
 * a down payment amount,
 * an interested rate (fixed rate),
