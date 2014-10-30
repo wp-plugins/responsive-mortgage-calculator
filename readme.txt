@@ -3,7 +3,7 @@ Contributors: liddweaver
 Tags: mortgage, mortgage calculator, realty, realtor, real estate, widget, responsive, jquery
 Requires at least: 3.0.1
 Tested up to: 3.9.2
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,3 +76,7 @@ You can insert the mortgage calculator into a page or post using the short code 
 = 1.1.2 =
 
 * Fixed a bug that caused the form to display at the top of the page instead of where the shortcode was placed.
+
++ 1.1.3 =
+
+* Minor CSS to remove margins from the Payment Period select box and prevent the surrounding span from resizing.
