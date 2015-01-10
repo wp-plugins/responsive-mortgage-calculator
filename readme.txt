@@ -86,3 +86,7 @@ You can insert the mortgage calculator into a page or post using the short code 
 * Massive code rewrite.
 * Added options page.
 * Widget users may need to reactivate the widget.
+
+= 2.0.1 =
+
+* Quick and dirty bug fixes.

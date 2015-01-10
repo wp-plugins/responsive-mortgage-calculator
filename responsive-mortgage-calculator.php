@@ -3,7 +3,7 @@
 Plugin Name: Responsive Mortgage Calculator
 Plugin URI: http://liddweaver.com/responsive-mortgage-calculator/
 Description: Add a responsive mortgage calculator widget or use the shortcode [mortgagecalculator] or [rmc]. Plenty of options to customize it to your preference.
-Version: 2.0.0
+Version: 2.0.1
 Author: liddweaver
 Author URI: http://liddweaver.com
 License: GPLv2
