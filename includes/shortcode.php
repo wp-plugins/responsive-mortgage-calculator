@@ -8,7 +8,7 @@
 
 // Add a shortcode.
 add_shortcode( 'mortgagecalculator', 'lidd_mc_shortcode' );
-add_shortcode( 'lidd_mc', 'lidd_mc_shortcode' );
+add_shortcode( 'rmc', 'lidd_mc_shortcode' );
 
 /**
  * Callback function for the shortcode.
