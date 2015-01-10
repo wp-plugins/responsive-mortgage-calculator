@@ -13,7 +13,7 @@ add_action( 'admin_menu', 'lidd_mc_add_settings_page' );
  * Callback function to register the settings page and menu option.
  */
 function lidd_mc_add_settings_page() {
-	add_options_page( 'Lidd Mortgage Calculator', 'Lidd\'s Mortgage Calc', 'manage_options', LIDD_MC_OPTIONS, 'lidd_mc_settings_page' );
+	add_options_page( 'Responsive Mortgage Calculator', 'Resp Mortgage Calc', 'manage_options', LIDD_MC_OPTIONS, 'lidd_mc_settings_page' );
 }
 
 // Register the specific sections and settings on the settings page.
@@ -428,8 +428,8 @@ function lidd_mc_validate_options( $input ) {
 function lidd_mc_settings_page() {
 	?>
 	<div class="wrap">
-		<h2>Lidd's Mortgage Calculator</h2>
-		<p>Add the calculator widget from the Widgets page or add it to a page or post using the shortcode [mortgagecalculator] or [lidd_mc].</p>
+		<h2>Responsive Mortgage Calculator</h2>
+		<p>Add the calculator widget from the Widgets page or add it to a page or post using the shortcode [mortgagecalculator] or [rmc].</p>
 		
 		<form action="options.php" method="post">
 			<?php settings_fields( LIDD_MC_OPTIONS ); ?>

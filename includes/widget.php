@@ -33,7 +33,7 @@ class lidd_mc_widget extends WP_Widget
 		);
 		
 		// Pass the options to WP_Widget to create the widget.
-		$this->WP_Widget( 'lidd_mc_widget', 'Lidd\'s Mortgage Calculator' );
+		$this->WP_Widget( 'lidd_mc_widget', 'Responsive Mortgage Calculator' );
 	}
 	
 	/**
