@@ -83,7 +83,7 @@ class lidd_mc_widget extends WP_Widget
 		}
 		
 		// Display the widget form.
-		echo lidd_rmc_display_form();
+		echo lidd_mc_display_form();
 		
 		echo $after_widget;
 		
