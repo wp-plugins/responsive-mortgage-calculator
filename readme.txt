@@ -90,3 +90,7 @@ You can insert the mortgage calculator into a page or post using the short code 
 = 2.0.1 =
 
 * Quick and dirty bug fixes.
+
+= 2.0.2 =
+
+* Fixed an error where the JS and CSS weren’t loading with the [rmc] shortcode

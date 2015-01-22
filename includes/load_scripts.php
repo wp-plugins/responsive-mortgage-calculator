@@ -27,7 +27,7 @@ function lidd_mc_detect_shortcode() {
 	// Check the content.
 	if ( preg_match_all( '/' . $pattern . '/s', $post->post_content, $matches )
 		&& array_key_exists( 2, $matches ) 
-		&& ( in_array( 'mortgagecalculator', $matches[2] ) || in_array( 'lidd_mc', $matches[2] ) ) ) {
+		&& ( in_array( 'mortgagecalculator', $matches[2] ) || in_array( 'rmc', $matches[2] ) ) ) {
 		
 			// Call the function to enqueue the style and script.
 			lidd_mc_enqueue_scripts();
