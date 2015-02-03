@@ -15,6 +15,11 @@ jQuery(document).ready(function() {
 		    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 		}
 		
+		// Formatting function for currency codes
+		function validateCurrencyCode(code) {
+			return code.replace(/[^A-Za-z]/, "");
+		}
+		
 		// Initialize variables.
 		var error = false; // Marker. Assume there is an error.
 		var period; // Store the payment period.
@@ -28,6 +33,7 @@ jQuery(document).ready(function() {
 		var pp = jQuery('#lidd_mc_payment_period option:selected' ).val();
 		var cp = jQuery('#lidd_mc_compounding_period' ).val();
 		var currency = jQuery('#lidd_mc_currency' ).val();
+		var currency_code = jQuery('#lidd_mc_currency_code' ).val();
 		
 		// Get the error reporting spans.
 		var ta_error = jQuery('#lidd_mc_total_amount-error');
@@ -127,10 +133,19 @@ jQuery(document).ready(function() {
 			case '¥': // Yen
 				currency = '¥';
 				break;
+			case '¤': // Generic
+				currency = '¤';
+				break;
 			case '$': // Dollar
 			default:
 				currency = '$';
 				break;
+		}
+		// Currency Code
+		if ( currency_code ) {
+			currency_code = validateCurrencyCode( currency_code );
+		} else {
+			currency_code = '';
 		}
 		
 		// ***** END VALIDATION ***** //
@@ -184,7 +199,7 @@ jQuery(document).ready(function() {
 			}
 			
 			// Print to the messaging areas.
-			resultDiv.html( '<p>Payments: <b class="lidd_mc_b">' + currency + result + '</b></p>' );
+			resultDiv.html( '<p>Payments: <b class="lidd_mc_b">' + currency + result + ' ' + currency_code + '</b></p>' );
 			summaryDiv.html( summary );
 
 			// Show the details div.

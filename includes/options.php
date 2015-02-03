@@ -40,6 +40,8 @@ function lidd_mc_admin_init() {
 	add_settings_field( 'lidd_mc_compounding_period', 'Compounding period for the mortgage interest', 'lidd_mc_settings_compounding_period', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Currency symbol
 	add_settings_field( 'lidd_mc_currency', 'Currency symbol', 'lidd_mc_settings_currency', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	// Currency code
+	add_settings_field( 'lidd_mc_currency_code', 'Currency code', 'lidd_mc_settings_currency_code', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Include Down Payment field
 	add_settings_field( 'lidd_mc_down_payment_visible', 'Include the down payment field', 'lidd_mc_settings_down_payment_visible', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 
@@ -177,9 +179,16 @@ function lidd_mc_settings_currency() {
 		'$' => '$ - Dollar',
 		'€' => '€ - Euro',
 		'£' => '£ - Pound',
-		'¥' => '¥ - Yen'
+		'¥' => '¥ - Yen',
+		'¤' => '¤ - Generic'
 	);
 	lidd_mc_settings_selectbox( 'currency', $options );
+}
+/**
+ * Function to create currency code settings input.
+ */
+function lidd_mc_settings_currency_code() {
+	lidd_mc_settings_text_input( 'currency_code' );
 }
 /**
  * Function to create down payment visibility settings input.
@@ -351,6 +360,9 @@ function lidd_mc_validate_options( $input ) {
 			case '¥':
 				$valid['currency'] = '¥';
 				break;
+			case '¤':
+				$valid['currency'] = '¤';
+				break;
 			default:
 				$valid['currency'] = '$';
 				break;
@@ -359,6 +371,14 @@ function lidd_mc_validate_options( $input ) {
 		$valid['currency'] = '$';
 	}
 	$valid['down_payment_visible'] = ( isset( $input['down_payment_visible'] ) ) ? 1 : 0;
+	
+	// Currency code
+	if ( isset( $input['currency_code'] ) ) {
+		$valid['currency_code'] = strtoupper( preg_replace( '/[^a-z]/i', '', $input['currency_code'] ) );
+		$valid['currency_code'] = substr( $valid['currency_code'], 0, 3 );
+	} else {
+		$valid['currency_code'] = null;
+	}
 	
 	// Layout and styling
 	if ( isset( $input['theme'] ) ) {

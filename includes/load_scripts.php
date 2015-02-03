@@ -42,6 +42,6 @@ function lidd_mc_enqueue_scripts() {
 	// Only enqueue the style if styles are on
 	$options = get_option( LIDD_MC_OPTIONS );
 	if ( $options['css_layout'] || $options['select_style'] || $options['theme'] != 'none' ) {
-		wp_enqueue_style( 'lidd_mc', LIDD_MC_URL . 'css/style.css', '', '2.0.0', 'screen' );
+		wp_enqueue_style( 'lidd_mc', LIDD_MC_URL . 'css/style.css', '', '2.0.1', 'screen' );
 	}
 }

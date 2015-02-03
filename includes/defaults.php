@@ -26,5 +26,6 @@ return array(
 	'down_payment_visible' => 1,
 	'compounding_period' => 2,
 	'currency' => '$',
+	'currency_code' => null,
 	'summary' => 1
 );

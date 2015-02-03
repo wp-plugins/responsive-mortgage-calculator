@@ -98,6 +98,10 @@ class LiddMCForm
 		// Currency
 		$cur = $factory->newInput( 'hidden', 'lidd_mc_currency' );
 		$cur->setValue( $options['currency'] );
+		
+		// Currency Code
+		$cc = $factory->newInput( 'hidden', 'lidd_mc_currency_code' );
+		$cc->setValue( $options['currency_code'] );
 	
 		// Submit button
 		$sub = $factory->newInput( 'submit', 'lidd_mc_submit' );
@@ -114,6 +118,7 @@ class LiddMCForm
 		$form .= $pp->getInput();
 		$form .= $cp->getInput();
 		$form .= $cur->getInput();
+		$form .= $cc->getInput();
 		$form .= $sub->getInput();
 		
 		$form .= '</form>';
