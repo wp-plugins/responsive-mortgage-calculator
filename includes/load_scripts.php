@@ -38,7 +38,7 @@ function lidd_mc_detect_shortcode() {
 // Function to enqueue the stylesheet and JavaScript.
 // Called for the widget or the shortcode.
 function lidd_mc_enqueue_scripts() {
-	wp_enqueue_script( 'lidd_mc', LIDD_MC_URL . 'js/lidd-mc.js', 'jquery', '2.0.0', true );
+	wp_enqueue_script( 'lidd_mc', LIDD_MC_URL . 'js/lidd-mc.js', 'jquery', '2.0.1', true );
 	// Only enqueue the style if styles are on
 	$options = get_option( LIDD_MC_OPTIONS );
 	if ( $options['css_layout'] || $options['select_style'] || $options['theme'] != 'none' ) {
