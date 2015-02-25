@@ -67,44 +67,44 @@ jQuery(document).ready(function() {
 			ta = Math.abs( Math.round( (+ta)*100 ) / 100 );
 			removeError( ta_error );
 		} else {
-			triggerError( ta_error, 'Please enter the total amount of the mortgage.');
+			triggerError( ta_error, lidd_mc_script_vars.ta_error );
 		}
 		// Down payment. If it is set, it must be less than the total amount.
 		if ( +dp == 0 || ( jQuery.isNumeric( +dp ) && +dp < ta ) ) {
 			dp = Math.abs( Math.round( (+dp)*100 ) / 100 );
 			removeError( dp_error );
 		} else {
-			triggerError( dp_error, 'Please enter a down payment amount or leave blank.' );
+			triggerError( dp_error, lidd_mc_script_vars.dp_error );
 		}
 		// Interest rate. Positve value less than 100%. Leaves room for loan sharks.
 		if ( jQuery.isNumeric( +ir ) && (+ir) < 100 && (+ir) > 0 ) {
 			ir = +ir;
 			removeError( ir_error );
 		} else {
-			triggerError( ir_error, 'Please enter an interest rate.' );
+			triggerError( ir_error, lidd_mc_script_vars.ir_error );
 		}
 		// Validate the payment period, just in case.
 		switch( pp ) {
 			case '52':
 				pp = 52;
-				period = 'Weekly';
+				period = lidd_mc_script_vars.weekly;
 				break;
 			case '26':
 				pp = 26;
-				period = 'Bi-Weekly';
+				period = lidd_mc_script_vars.biweekly;
 				break;
 			default:
 				pp = 12;
-				period = 'Monthly';
+				period = lidd_mc_script_vars.monthly;
 				break;
 		}
 		// Amortization period. 50 years is absurdly long, but meh...
-		if ( jQuery.isNumeric( +am ) && Math.abs(+am) < 50 && (+am) !== 0 ) {
+		if ( jQuery.isNumeric( +am ) && Math.abs(+am) < 51 && (+am) !== 0 ) {
 			// The amortization period needs to fit nicely with the payment periods if there are decimals.
 			am = Math.abs( Math.ceil( (+am)*pp ) / pp );
 			removeError( am_error );
 		} else {
-			triggerError( am_error, 'Please enter an amortization period.' );
+			triggerError( am_error, lidd_mc_script_vars.ap_error );
 		}
 		// Compounding period
 		switch( cp ) {
@@ -176,26 +176,39 @@ jQuery(document).ready(function() {
 			var result = numberWithCommas(parseFloat( Math.round( payment * 100 ) / 100 ).toFixed(2));
 			
 			// Summarize the data.
-			var summary = '<p>For a mortgage of <b class="lidd_mc_b">' + currency + numberWithCommas(parseInt(ta - dp).toFixed(2)) + '</b> amortized over <b class="lidd_mc_b">';
-			// Determine the payment period in years.
-			summary += (Math.floor(am)) + '</b> years';
-			// Check for weeks or months.
+			var display_total = currency + numberWithCommas(parseInt(ta - dp).toFixed(2));
 			if ( ( am - Math.floor(am) > 0 ) ) {
 				var remainder = (np > pp) ? np % pp : pp % np;
-				if ( period === 'Monthly' ) {
-					summary += ' and <b class="lidd_mc_b">' + remainder + '</b> months';
-				} else if ( period === 'Weekly' ) {
-					summary += ' and <b class="lidd_mc_b">' + remainder + '</b> weeks';
+				if ( pp == 12 ) {
+					if ( remainder > 1 ) {
+						var summary = lidd_mc_script_vars.sym_text;
+						summary = summary.replace( "{amortization_months}", remainder );
+					} else {
+						var summary = lidd_mc_script_vars.sym1_text;
+					}
+				} else if ( pp == 52 ) {
+					if ( remainder > 1 ) {
+						var summary = lidd_mc_script_vars.syw_text;
+						summary = summary.replace( "{amortization_weeks}", remainder );
+					} else {
+						var summary = lidd_mc_script_vars.syw1_text;
+					}
 				} else {
-					summary += ' and <b class="lidd_mc_b">' + ( remainder * 2 ) + '</b> weeks';
+					var summary = lidd_mc_script_vars.syw_text;
+					summary = summary.replace( "{amortization_weeks}", remainder * 2 );
 				}
+			} else {
+				var summary = lidd_mc_script_vars.sy_text;
 			}
-			summary += ', your <b class="lidd_mc_b">' + period + '</b> payment is:</p>';
-			summary += '<p>Mortgage Payment: <b class="lidd_mc_b">' + currency + result + '</b></p>';
-			summary += '<p>Total Mortgage with Interest: <b class="lidd_mc_b">' + currency + numberWithCommas(parseFloat( Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) ) + '</b></p>';
+			summary = summary.replace( "{total_amount}", display_total );
+			summary = summary.replace( "{amortization_years}", Math.floor(am) );
+			summary = summary.replace( "{payment_period}", period );
+			summary = '<p>' + summary + ':</p>';
+			summary += '<p>' + lidd_mc_script_vars.mp_text + ': <b class="lidd_mc_b">' + currency + result + '</b></p>';
+			summary += '<p>' + lidd_mc_script_vars.tmwi_text + ': <b class="lidd_mc_b">' + currency + numberWithCommas(parseFloat( Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) ) + '</b></p>';
 			
 			if ( dp > 0 ) {
-				summary += '<p>Total with Down Payment: <b class="lidd_mc_b">' + currency + numberWithCommas(parseFloat( dp + Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) )+ '</b></p>';
+				summary += '<p>' + lidd_mc_script_vars.twdp_text + ': <b class="lidd_mc_b">' + currency + numberWithCommas(parseFloat( dp + Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) )+ '</b></p>';
 			}
 			
 			// Print to the messaging areas.

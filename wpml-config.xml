@@ -1,0 +1,12 @@
+<wpml-config>
+  <admin-texts>
+    <key name="lidd_mc_options">
+      <key name="total_amount_label" />
+	  <key name="down_payment_label" />
+	  <key name="interest_rate_label" />
+	  <key name="amortization_period_label" />
+	  <key name="payment_period_label" />
+	  <key name="submit_label" />
+    </key>
+  </admin-texts>
+</wpml-config>

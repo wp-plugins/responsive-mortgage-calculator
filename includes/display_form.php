@@ -9,7 +9,8 @@
 /**
  * Create a function to create the calculator form.
  *
- * @return  string  The HTML to display the form and results.
+ * @param	array	$attr	The shortcode attributes
+ * @return  string			The HTML to display the form and results.
  */
 function lidd_mc_display_form( $attr = array() ) {
 	

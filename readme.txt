@@ -28,7 +28,17 @@ The payment result is displayed below the form - very simply and very easy to fo
 
 __Redesign It__
 
-The widget is built with plenty of classes to hook into for styling, so it’s easy to override the included stylesheet.
+The widget is built with plenty of classes to hook into for styling, so it’s easy to override the included stylesheet. There are settings to adjust the styling, a light and a dark theme, or you can remove the styling entirely and use your themes styling.
+
+__Plenty of Options__
+
+* Set the compounding period for your region,
+* Set your currency symbol and currency code
+* Hide the down payment field
+* Set a fixed payment period
+* Rename the field labels,
+* Set your own field labels
+* Add your own CSS classes
 
 __Known Issues__
 
