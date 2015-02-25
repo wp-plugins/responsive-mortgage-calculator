@@ -199,7 +199,7 @@ jQuery(document).ready(function() {
 			}
 			
 			// Print to the messaging areas.
-			resultDiv.html( '<p>Payments: <b class="lidd_mc_b">' + currency + result + ' ' + currency_code + '</b></p>' );
+			resultDiv.html( '<p>' + period + ' Payments: <b class="lidd_mc_b">' + currency + result + ' ' + currency_code + '</b></p>' );
 			summaryDiv.html( summary );
 
 			// Show the details div.

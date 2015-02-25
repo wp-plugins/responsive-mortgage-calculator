@@ -3,7 +3,7 @@
  * A class to define the mortgage calculator form
  *
  * @package Lidd's Mortgage Calculator
- * @since 1.0.0
+ * @since 2.0.0
  */
 class LiddMCForm
 {
@@ -78,18 +78,23 @@ class LiddMCForm
 		// Amortization period
 		$ap = $factory->newInput( 'text', 'lidd_mc_amortization_period' );
 		$ap->setLabel( $options['amortization_period_label'] );
-		$ap->setPlaceholder( 'years' );
+		$ap->setPlaceholder( __( 'years', 'liddmc' ) );
 		$ap->setClass( $options['amortization_period_class'] );
 	
 		// Payment period
-		$pp = $factory->newInput( 'select', 'lidd_mc_payment_period' );
-		$pp->setLabel( $options['payment_period_label'] );
-		$pp->setClass( $options['payment_period_class'] );
-		$pp->setOptions( array(
-				12 => 'Monthly',
-				26 => 'Bi-Weekly',
-				52 => 'Weekly'
-			) );
+		if ( in_array( $options['payment_period'], array( 12, 26, 52 ) ) ) {
+			$pp = $factory->newInput( 'hidden', 'lidd_mc_payment_period' );
+			$pp->setValue( $options['payment_period'] );
+		} else {
+			$pp = $factory->newInput( 'select', 'lidd_mc_payment_period' );
+			$pp->setLabel( $options['payment_period_label'] );
+			$pp->setClass( $options['payment_period_class'] );
+			$pp->setOptions( array(
+					12 => __( 'Monthly', 'liddmc' ),
+					26 => __( 'Bi-Weekly', 'liddmc' ),
+					52 => __( 'Weekly', 'liddmc' )
+				) );
+		}
 
 		// Number of compounding periods
 		$cp = $factory->newInput( 'hidden', 'lidd_mc_compounding_period' );

@@ -3,7 +3,7 @@
  * An abstract class to define select inputs
  *
  * @package Lidd's Mortgage Calculator
- * @since 1.0.0
+ * @since 2.0.0
  */
 class LiddMCSelectInput extends LiddMCInputExtended
 {	

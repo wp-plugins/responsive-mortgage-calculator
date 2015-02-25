@@ -5,7 +5,7 @@
  * This file includes other necessary files.
  *
  * @package Lidd's Mortgage Calculator
- * @since 1.0.0
+ * @since 2.0.0
  */
 
 include ( LIDD_MC_ROOT . 'includes/LiddMCOptions.php' );

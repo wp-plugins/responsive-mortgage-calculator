@@ -3,7 +3,7 @@
  * This file creates the plugin settings page
  *
  * @package Lidd's Mortgage Calculator
- * @since 1.0.0
+ * @since 2.0.0
  */
 
 // Create a settings page.
@@ -13,7 +13,7 @@ add_action( 'admin_menu', 'lidd_mc_add_settings_page' );
  * Callback function to register the settings page and menu option.
  */
 function lidd_mc_add_settings_page() {
-	add_options_page( 'Responsive Mortgage Calculator', 'Resp Mortgage Calc', 'manage_options', LIDD_MC_OPTIONS, 'lidd_mc_settings_page' );
+	add_options_page( 'Responsive Mortgage Calculator', __( 'Resp Mortgage Calculator', 'liddmc' ), 'manage_options', LIDD_MC_OPTIONS, 'lidd_mc_settings_page' );
 }
 
 // Register the specific sections and settings on the settings page.
@@ -35,84 +35,86 @@ function lidd_mc_admin_init() {
 	// Create settings page sections
 	// --------------------------------------------
 	// Calculator settings
-	add_settings_section( 'lidd_mc_calcsettings', 'Calculator Settings', 'lidd_mc_options_calcsettings_text', LIDD_MC_OPTIONS );
+	add_settings_section( 'lidd_mc_calcsettings', __( 'Calculator Settings', 'liddmc' ), 'lidd_mc_options_calcsettings_text', LIDD_MC_OPTIONS );
 	// Compounding period
-	add_settings_field( 'lidd_mc_compounding_period', 'Compounding period for the mortgage interest', 'lidd_mc_settings_compounding_period', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	add_settings_field( 'lidd_mc_compounding_period', __( 'Compounding period for the mortgage interest', 'liddmc' ), 'lidd_mc_settings_compounding_period', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Currency symbol
-	add_settings_field( 'lidd_mc_currency', 'Currency symbol', 'lidd_mc_settings_currency', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	add_settings_field( 'lidd_mc_currency', __( 'Currency symbol', 'liddmc' ), 'lidd_mc_settings_currency', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Currency code
-	add_settings_field( 'lidd_mc_currency_code', 'Currency code', 'lidd_mc_settings_currency_code', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	add_settings_field( 'lidd_mc_currency_code', __( 'Currency code', 'liddmc' ) . ' &ndash; <a href="http://www.currency-iso.org/">ISO 4217</a>', 'lidd_mc_settings_currency_code', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Include Down Payment field
-	add_settings_field( 'lidd_mc_down_payment_visible', 'Include the down payment field', 'lidd_mc_settings_down_payment_visible', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	add_settings_field( 'lidd_mc_down_payment_visible', __( 'Include the down payment field', 'liddmc' ), 'lidd_mc_settings_down_payment_visible', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	// Set a fixed Payment Period (creates a hidden input with a set payment period)
+	add_settings_field( 'lidd_mc_fixed_payment_period', __( 'Set a fixed payment period', 'liddmc' ), 'lidd_mc_settings_fixed_payment_period', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 
 	// --------------------------------------------
 	// General styling
-	add_settings_section( 'lidd_mc_css', 'Layout and Styling (CSS)', 'lidd_mc_options_css_text', LIDD_MC_OPTIONS );
+	add_settings_section( 'lidd_mc_css', __( 'Layout and Styling (CSS)', 'liddmc' ), 'lidd_mc_options_css_text', LIDD_MC_OPTIONS );
 	// Theme (light, dark, none)
-	add_settings_field( 'lidd_mc_theme', 'Choose a theme', 'lidd_mc_settings_theme', LIDD_MC_OPTIONS, 'lidd_mc_css' );
+	add_settings_field( 'lidd_mc_theme', __( 'Choose a theme', 'liddmc' ), 'lidd_mc_settings_theme', LIDD_MC_OPTIONS, 'lidd_mc_css' );
 	// Include fancy payment period styles
-	add_settings_field( 'lidd_mc_select_style', 'Make the Payment Period select box look fancy', 'lidd_mc_settings_select_style', LIDD_MC_OPTIONS, 'lidd_mc_css' );
+	add_settings_field( 'lidd_mc_select_style', __( 'Make the Payment Period select box look fancy', 'liddmc' ), 'lidd_mc_settings_select_style', LIDD_MC_OPTIONS, 'lidd_mc_css' );
 	// Fancy payment period down arrow position
-	add_settings_field( 'lidd_mc_select_pointer', 'Adjust the vertical position of the down arrow on the fancy select box', 'lidd_mc_settings_select_pointer', LIDD_MC_OPTIONS, 'lidd_mc_css' );
+	add_settings_field( 'lidd_mc_select_pointer', __( 'Adjust the vertical position of the down arrow on the fancy select box', 'liddmc' ), 'lidd_mc_settings_select_pointer', LIDD_MC_OPTIONS, 'lidd_mc_css' );
 	// Include responsive styles
-	add_settings_field( 'lidd_mc_css_layout', 'Make it responsive', 'lidd_mc_settings_css_layout', LIDD_MC_OPTIONS, 'lidd_mc_css' );
+	add_settings_field( 'lidd_mc_css_layout', __( 'Make it responsive', 'liddmc' ), 'lidd_mc_settings_css_layout', LIDD_MC_OPTIONS, 'lidd_mc_css' );
 
 	// --------------------------------------------
 	// Results
-	add_settings_section( 'lidd_mc_results', 'Results', 'lidd_mc_options_results_text', LIDD_MC_OPTIONS );
+	add_settings_section( 'lidd_mc_results', __( 'Results', 'liddmc' ), 'lidd_mc_options_results_text', LIDD_MC_OPTIONS );
 	// Additional information panel (0 = hide, 1 = toggle, 2 = always show)
-	add_settings_field( 'lidd_mc_summary', 'Set the result summary visibility', 'lidd_mc_settings_summary', LIDD_MC_OPTIONS, 'lidd_mc_results' );
+	add_settings_field( 'lidd_mc_summary', __( 'Set the result summary visibility', 'liddmc' ), 'lidd_mc_settings_summary', LIDD_MC_OPTIONS, 'lidd_mc_results' );
 
 	// --------------------------------------------
 	// Labels
-	add_settings_section( 'lidd_mc_labels', 'Input Labels', 'lidd_mc_options_labels_text', LIDD_MC_OPTIONS );
+	add_settings_section( 'lidd_mc_labels', __( 'Input Labels', 'liddmc' ), 'lidd_mc_options_labels_text', LIDD_MC_OPTIONS );
 	// Total Amount label
-	add_settings_field( 'lidd_mc_total_amount_label', 'Total Amount label', 'lidd_mc_settings_total_amount_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
+	add_settings_field( 'lidd_mc_total_amount_label', __( 'Total Amount label', 'liddmc' ), 'lidd_mc_settings_total_amount_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
 	// Down Payment label
-	add_settings_field( 'lidd_mc_down_payment_label', 'Down Payment label', 'lidd_mc_settings_down_payment_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
+	add_settings_field( 'lidd_mc_down_payment_label', __( 'Down Payment label', 'liddmc' ), 'lidd_mc_settings_down_payment_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
 	// Interest Rate label
-	add_settings_field( 'lidd_mc_interest_rate_label', 'Interest Rate label', 'lidd_mc_settings_interest_rate_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
+	add_settings_field( 'lidd_mc_interest_rate_label', __( 'Interest Rate label', 'liddmc' ), 'lidd_mc_settings_interest_rate_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
 	// Amortization Period label
 	add_settings_field( 'lidd_mc_amortization_period_label', 'Amortization Period label', 'lidd_mc_settings_amortization_period_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
 	// Payment Period label
-	add_settings_field( 'lidd_mc_payment_period_label', 'Payment Period label', 'lidd_mc_settings_payment_period_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
+	add_settings_field( 'lidd_mc_payment_period_label', __( 'Payment Period label', 'liddmc' ), 'lidd_mc_settings_payment_period_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
 	// Submit label
-	add_settings_field( 'lidd_mc_submit_label', 'Submit button label', 'lidd_mc_settings_submit_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
+	add_settings_field( 'lidd_mc_submit_label', __( 'Submit button label', 'liddmc' ), 'lidd_mc_settings_submit_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
 
 	// --------------------------------------------
 	// Classes
-	add_settings_section( 'lidd_mc_classes', 'Input Classes', 'lidd_mc_options_classes_text', LIDD_MC_OPTIONS );
+	add_settings_section( 'lidd_mc_classes', __( 'Input Classes', 'liddmc' ), 'lidd_mc_options_classes_text', LIDD_MC_OPTIONS );
 	// Total Amount class
-	add_settings_field( 'lidd_mc_total_amount_class', 'Total Amount class', 'lidd_mc_settings_total_amount_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
+	add_settings_field( 'lidd_mc_total_amount_class', __( 'Total Amount class', 'liddmc' ), 'lidd_mc_settings_total_amount_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
 	// Down Payment class
-	add_settings_field( 'lidd_mc_down_payment_class', 'Down Payment class', 'lidd_mc_settings_down_payment_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
+	add_settings_field( 'lidd_mc_down_payment_class', __( 'Down Payment class', 'liddmc' ), 'lidd_mc_settings_down_payment_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
 	// Interest Rate class
-	add_settings_field( 'lidd_mc_interest_rate_class', 'Interest Rate class', 'lidd_mc_settings_interest_rate_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
+	add_settings_field( 'lidd_mc_interest_rate_class', __( 'Interest Rate class', 'liddmc' ), 'lidd_mc_settings_interest_rate_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
 	// Amortization Period class
-	add_settings_field( 'lidd_mc_amortization_period_class', 'Amortization Period class', 'lidd_mc_settings_amortization_period_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
+	add_settings_field( 'lidd_mc_amortization_period_class', __( 'Amortization Period class', 'liddmc' ), 'lidd_mc_settings_amortization_period_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
 	// Payment Period class
-	add_settings_field( 'lidd_mc_payment_period_class', 'Payment Period class', 'lidd_mc_settings_payment_period_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
+	add_settings_field( 'lidd_mc_payment_period_class', __( 'Payment Period class', 'liddmc' ), 'lidd_mc_settings_payment_period_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
 	// Submit class
-	add_settings_field( 'lidd_mc_submit_class', 'Submit button class', 'lidd_mc_settings_submit_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
+	add_settings_field( 'lidd_mc_submit_class', __( 'Submit button class', 'liddmc' ), 'lidd_mc_settings_submit_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
 	
 }
 
 // --------------------------------------------
 // Settings section text functions.
 function lidd_mc_options_calcsettings_text() {
-	echo '<p>Change the basic functioning and parameters for the calculator.</p>';
+	echo '<p>' . __( 'Change the basic functioning and parameters for the calculator.', 'liddmc' ) . '</p>';
 }
 function lidd_mc_options_css_text() {
-	echo '<p>Toggle layout and styling. Remove styling to prevent CSS from loading (but it won\'t be responsive any more).</p>';
+	echo '<p>' . __( 'Toggle layout and styling. Remove styling to prevent CSS from loading (but it won\'t be responsive any more).', 'liddmc' ) . '</p>';
 }
 function lidd_mc_options_results_text() {
-	echo '<p>Change the additional information panel settings.</p>';
+	echo '<p>' . __( 'Change the additional information panel settings.', 'liddmc' ) . '</p>';
 }
 function lidd_mc_options_labels_text() {
-	echo '<p>Set your own labels for the inputs.</p>';
+	echo '<p>' . __( 'Set your own labels for the inputs.', 'liddmc' ) . '</p>';
 }
 function lidd_mc_options_classes_text() {
-	echo '<p>Add CSS classes to override styles or to hook into your theme\'s styling.</p>';
+	echo '<p>' . __( 'Add CSS classes to override styles or to hook into your theme\'s styling.', 'liddmc' ) . '</p>';
 }
 
 
@@ -148,10 +150,10 @@ function lidd_mc_settings_selectbox( $key, $options ) {
 	$value = $lidd_mc_options_object->getOption( $key );
 	// Display the input.
 	$select = '
-		<select name="' . LIDD_MC_OPTIONS . '[' . $key . ']">';
+		<select name="' . LIDD_MC_OPTIONS . '[' . esc_attr( $key ) . ']">';
 	foreach ( $options as $k => $v ) {
 		$select .= '
-			<option value="' . $k . '" ' . selected( $value, $k, false ) . '>' . $v . '</option>';
+			<option value="' . $k . '" ' . selected( $value, $k, false ) . '>' . esc_html( $v ) . '</option>';
 	}
 	$select .= '
 		</select>';
@@ -164,10 +166,10 @@ function lidd_mc_settings_selectbox( $key, $options ) {
  */
 function lidd_mc_settings_compounding_period() {
 	$options = array(
-		1 => 'Annually',
-		2 => 'Semi-Annually', 
-		4 => 'Quarterly',
-		12 => 'Monthly'
+		1 => __( 'Annually', 'liddmc' ),
+		2 => __( 'Semi-Annually', 'liddmc' ), 
+		4 => __( 'Quarterly', 'liddmc' ),
+		12 => __( 'Monthly', 'liddmc' )
 	);
 	lidd_mc_settings_selectbox( 'compounding_period', $options );
 }
@@ -176,11 +178,11 @@ function lidd_mc_settings_compounding_period() {
  */
 function lidd_mc_settings_currency() {
 	$options = array(
-		'$' => '$ - Dollar',
-		'€' => '€ - Euro',
-		'£' => '£ - Pound',
-		'¥' => '¥ - Yen',
-		'¤' => '¤ - Generic'
+		'$' => '$ - ' . __( 'Dollar', 'liddmc' ),
+		'€' => '€ - ' . __( 'Euro', 'liddmc' ),
+		'£' => '£ - ' . __( 'Pound', 'liddmc' ),
+		'¥' => '¥ - ' . __( 'Yen', 'liddmc' ),
+		'¤' => '¤ - ' . __( 'Generic', 'liddmc' )
 	);
 	lidd_mc_settings_selectbox( 'currency', $options );
 }
@@ -197,13 +199,25 @@ function lidd_mc_settings_down_payment_visible() {
 	lidd_mc_settings_checkbox( 'down_payment_visible' );
 }
 /**
+ * Function to create fixed payment period settings input.
+ */
+function lidd_mc_settings_fixed_payment_period() {
+	$options = array(
+		'0' => __( 'Allow user selection', 'liddmc' ),
+		'12' => __( 'Monthly', 'liddmc' ),
+		'26' => __( 'Bi-Weekly', 'liddmc' ),
+		'52' => __( 'Weekly', 'liddmc' )
+	);
+	lidd_mc_settings_selectbox( 'payment_period', $options );
+}
+/**
  * Function to create theme settings input.
  */
 function lidd_mc_settings_theme() {
 	$options = array(
-		'light' => 'Light', 
-		'dark' => 'Dark',
-		'none' => 'Use my theme\'s default styling'
+		'light' => __( 'Light', 'liddmc' ), 
+		'dark' => __( 'Dark', 'liddmc' ),
+		'none' => __( 'Use my theme\'s default styling', 'liddmc' )
 	);
 	lidd_mc_settings_selectbox( 'theme', $options );
 }
@@ -238,9 +252,9 @@ function lidd_mc_settings_css_layout() {
  */
 function lidd_mc_settings_summary() {
 	$options = array(
-		0 => 'Don\'t include the summary', 
-		1 => 'Hide the summary, but show the toggle icon',
-		2 => 'Show the summary (no toggle)'
+		0 => __( 'Don\'t include the summary', 'liddmc' ), 
+		1 => __( 'Hide the summary, but show the toggle icon', 'liddmc' ),
+		2 => __( 'Show the summary (no toggle)', 'liddmc' )
 	);
 	lidd_mc_settings_selectbox( 'summary', $options );
 	
@@ -349,6 +363,8 @@ function lidd_mc_validate_options( $input ) {
 
 	// Calculator settings
 	$valid['compounding_period'] = ( isset( $input['compounding_period'] ) && in_array( $input['compounding_period'], array( 1, 2, 4, 12 ) ) ) ? absint( $input['compounding_period'] ) : 2;
+	
+	// Currency
 	if ( isset( $input['currency'] ) ) {
 		switch ( $input['currency'] ) {
 			case '£':
@@ -370,7 +386,6 @@ function lidd_mc_validate_options( $input ) {
 	} else {
 		$valid['currency'] = '$';
 	}
-	$valid['down_payment_visible'] = ( isset( $input['down_payment_visible'] ) ) ? 1 : 0;
 	
 	// Currency code
 	if ( isset( $input['currency_code'] ) ) {
@@ -378,6 +393,30 @@ function lidd_mc_validate_options( $input ) {
 		$valid['currency_code'] = substr( $valid['currency_code'], 0, 3 );
 	} else {
 		$valid['currency_code'] = null;
+	}
+	
+	// Down payment field
+	$valid['down_payment_visible'] = ( isset( $input['down_payment_visible'] ) ) ? 1 : 0;
+	
+	// Fixed payment period
+	if ( isset( $input['payment_period'] ) ) {
+		switch ( $input['payment_period'] ) {
+			case '52':
+				$valid['payment_period'] = 52;
+				break;
+			case '26':
+				$valid['payment_period'] = 26;
+				break;
+			case '12':
+				$valid['payment_period'] = 12;
+				break;
+			case '0':
+			default:
+				$valid['payment_period'] = 0;
+				break;
+		}
+	} else {
+		$valid['payment_period'] = 0;
 	}
 	
 	// Layout and styling
@@ -448,13 +487,21 @@ function lidd_mc_validate_options( $input ) {
 function lidd_mc_settings_page() {
 	?>
 	<div class="wrap">
-		<h2>Responsive Mortgage Calculator</h2>
-		<p>Add the calculator widget from the Widgets page or add it to a page or post using the shortcode [mortgagecalculator] or [rmc].</p>
+		<h2><?php esc_html_e('Responsive Mortgage Calculator', 'liddmc' ); ?></h2>
+		<p><?php
+			
+		printf(
+			__('Add the calculator widget from the Widgets page or add it to a page or post using the shortcode %1$s or %2$s.', 'liddmc'),
+			'[mortgagecalculator]',
+			'[rmc]'
+		);
+		
+		?></p>
 		
 		<form action="options.php" method="post">
 			<?php settings_fields( LIDD_MC_OPTIONS ); ?>
 			<?php do_settings_sections( LIDD_MC_OPTIONS ); ?>
-			<input name="submit" type="submit" value="Save Changes" class="button button-primary" />
+			<input name="submit" type="submit" value="<?php esc_attr_e( 'Save Changes', 'liddmc' ); ?>" class="button button-primary" />
 		</form>
 	</div>
 	<?php

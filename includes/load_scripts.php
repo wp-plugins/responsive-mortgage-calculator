@@ -3,7 +3,7 @@
  * This file determines whether to load the JS and CSS
  *
  * @package Lidd's Mortgage Calculator
- * @since 1.0.0
+ * @since 2.0.0
  */
 
 // Load JS and CSS if the widget is active.

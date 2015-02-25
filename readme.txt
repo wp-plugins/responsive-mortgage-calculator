@@ -3,7 +3,7 @@ Contributors: liddweaver
 Tags: mortgage, mortgage calculator, realty, realtor, real estate, widget, responsive, jquery
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 2.0.3
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -99,3 +99,10 @@ You can insert the mortgage calculator into a page or post using the short code 
 
 * Added generic currency symbol
 * Added input for ISO currency code on the options page
+
+= 2.1.0 =
+
+* Added option for setting a fixed payment period
+* Result now shows the payment period
+* Added ability to set input and submit button labels using shortcode attributes
+* Beginning internationalization - still needs PO and MO files

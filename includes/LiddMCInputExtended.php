@@ -3,7 +3,7 @@
  * A class to define inputs with more structure.
  *
  * @package Lidd's Mortgage Calculator
- * @since 1.0.0
+ * @since 2.0.0
  */
 class LiddMCInputExtended extends LiddMCInput
 {	

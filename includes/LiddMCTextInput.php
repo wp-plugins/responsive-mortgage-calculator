@@ -3,7 +3,7 @@
  * A class to define text inputs
  *
  * @package Lidd's Mortgage Calculator
- * @since 1.0.0
+ * @since 2.0.0
  */
 class LiddMCTextInput extends LiddMCInputExtended
 {	

@@ -1,6 +1,9 @@
 <?php
 /**
  *	Lidd Mortgage Calculator uninstall script
+ *
+ * @package Lidd's Mortgage Calculator
+ * @since 2.0.0
  */
 
 // Make sure this file is called from within Wordpress.

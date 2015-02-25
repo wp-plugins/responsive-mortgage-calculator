@@ -3,7 +3,7 @@
  * An class to define submit inputs
  *
  * @package Lidd's Mortgage Calculator
- * @since 1.0.0
+ * @since 2.0.0
  */
 class LiddMCSubmit extends LiddMCInput
 {	

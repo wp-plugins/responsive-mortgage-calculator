@@ -3,7 +3,7 @@
  * This file creates the widget.
  *
  * @package Lidd's Mortgage Calculator
- * @since 1.0.0
+ * @since 2.0.0
  */
 
 // Call the hook to register the widget.
