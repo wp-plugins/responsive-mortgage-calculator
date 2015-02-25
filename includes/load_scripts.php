@@ -51,38 +51,50 @@ function lidd_mc_enqueue_scripts() {
 			'monthly' => __( 'Monthly', 'liddmc' ),
 			'ap_error' => __( 'Please enter an amortization period.', 'liddmc' ),
 			'p_text' => sprintf(
-				__( '%s Payment', 'liddmc' ),
-				$period
+				__( '%1$s Payment', 'liddmc' ),
+				'{payment_period}'
+				
 			),
+			'currency_format' => $bs . sprintf(
+				_x( '%1$s' . '%2$s %3$s', 'Currency format, eg. $2.00 USD', 'liddmc' ),
+				'{symbol}',
+				'{amount}',
+				'{code}'
+			) . $be,
 			'sy_text' => sprintf( // Summary with number of years
-				__( 'For a mortgage of %1$s amortized over %2$s years, your %3$s payment is', 'liddmc' ),
+				__( 'For a mortgage of %1$s' . '%2$s amortized over %3$s years, your %4$s payment is', 'liddmc' ),
+				$bs . '{currency}' . $be,
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
 				$bs . '{payment_period}' . $be
 			),
 			'sym1_text' => sprintf( // Summary with years and months
-				__( 'For a mortgage of %1$s amortized over %2$s years and %3$s month, your %4$s payment is', 'liddmc' ),
+				__( 'For a mortgage of %1$s' . '%2$s amortized over %3$s years and %4$s month, your %5$s payment is', 'liddmc' ),
+				$bs . '{currency}' . $be,
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
 				$bs . '1' . $be,
 				$bs . '{payment_period}' . $be
 			),
 			'sym_text' => sprintf( // Summary with years and months
-				__( 'For a mortgage of %1$s amortized over %2$s years and %3$s months, your %4$s payment is', 'liddmc' ),
+				__( 'For a mortgage of %1$s' . '%2$s amortized over %3$s years and %4$s months, your %5$s payment is', 'liddmc' ),
+				$bs . '{currency}' . $be,
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
 				$bs . '{amortization_months}' . $be,
 				$bs . '{payment_period}' . $be
 			),
 			'syw1_text' => sprintf( // Summary with years and weeks
-				__( 'For a mortgage of %1$s amortized over %2$s years and %3$s week, your %4$s payment is', 'liddmc' ),
+				__( 'For a mortgage of %1$s' . '%2$s amortized over %3$s years and %4$s week, your %5$s payment is', 'liddmc' ),
+				$bs . '{currency}' . $be,
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
 				$bs . '1' . $be,
 				$bs . '{payment_period}' . $be
 			),
 			'syw_text' => sprintf( // Summary with years and weeks
-				__( 'For a mortgage of %1$s amortized over %2$s years and %3$s weeks, your %4$s payment is', 'liddmc' ),
+				__( 'For a mortgage of %1$s' . '%2$s amortized over %3$s years and %4$s weeks, your %5$s payment is', 'liddmc' ),
+				$bs . '{currency}' . $be,
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
 				$bs . '{amortization_weeks}' . $be,

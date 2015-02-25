@@ -20,6 +20,15 @@ jQuery(document).ready(function() {
 			return code.replace(/[^A-Za-z]/, "");
 		}
 		
+		// Function to format internationalized currencies
+		function formatCurrency( format, symbol, amount, code ) {
+			var formatted = format;
+			formatted = formatted.replace( "{symbol}", symbol );
+			formatted = formatted.replace( "{amount}", amount );
+			formatted = formatted.replace( "{code}", code );
+			return formatted;
+		}
+		
 		// Initialize variables.
 		var error = false; // Marker. Assume there is an error.
 		var period; // Store the payment period.
@@ -176,7 +185,7 @@ jQuery(document).ready(function() {
 			var result = numberWithCommas(parseFloat( Math.round( payment * 100 ) / 100 ).toFixed(2));
 			
 			// Summarize the data.
-			var display_total = currency + numberWithCommas(parseInt(ta - dp).toFixed(2));
+			var display_total = numberWithCommas(parseInt(ta - dp).toFixed(2));
 			if ( ( am - Math.floor(am) > 0 ) ) {
 				var remainder = (np > pp) ? np % pp : pp % np;
 				if ( pp == 12 ) {
@@ -200,19 +209,45 @@ jQuery(document).ready(function() {
 			} else {
 				var summary = lidd_mc_script_vars.sy_text;
 			}
+			summary = summary.replace( "{currency}", currency );
 			summary = summary.replace( "{total_amount}", display_total );
 			summary = summary.replace( "{amortization_years}", Math.floor(am) );
 			summary = summary.replace( "{payment_period}", period );
 			summary = '<p>' + summary + ':</p>';
-			summary += '<p>' + lidd_mc_script_vars.mp_text + ': <b class="lidd_mc_b">' + currency + result + '</b></p>';
-			summary += '<p>' + lidd_mc_script_vars.tmwi_text + ': <b class="lidd_mc_b">' + currency + numberWithCommas(parseFloat( Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) ) + '</b></p>';
 			
+			// Mortgage payment
+			summary += '<p>' + lidd_mc_script_vars.mp_text + ': <b class="lidd_mc_b">' + formatCurrency( lidd_mc_script_vars.currency_format, currency, result, currency_code ) + '</b></p>';
+			
+			// Total mortgage with interest
+			summary += '<p>' + lidd_mc_script_vars.tmwi_text + ': <b class="lidd_mc_b">' + formatCurrency(
+				lidd_mc_script_vars.currency_format,
+				currency,
+				numberWithCommas(parseFloat( Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) ),
+				currency_code
+			) + '</b></p>';
+			
+			// Total with down payment
 			if ( dp > 0 ) {
-				summary += '<p>' + lidd_mc_script_vars.twdp_text + ': <b class="lidd_mc_b">' + currency + numberWithCommas(parseFloat( dp + Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) )+ '</b></p>';
+				summary += '<p>' + lidd_mc_script_vars.twdp_text + ': <b class="lidd_mc_b">' + formatCurrency(
+					lidd_mc_script_vars.currency_format,
+					currency,
+					numberWithCommas(parseFloat( dp + Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) ),
+					currency_code
+				) + '</b></p>';
 			}
 			
+			// Payments amount
+			var display_result = lidd_mc_script_vars.p_text.replace( "{payment_period}", period );
+			display_result = display_result + ': ' + formatCurrency(
+				lidd_mc_script_vars.currency_format,
+				currency,
+				result,
+				currency_code
+			);
+			//result = '<p>' + lidd_mc_script_vars.p_text.replace( "{payment_period}", period ) + ': <b class="lidd_mc_b">' + currency + result + ' ' + currency_code + '</b></p>';
+			
 			// Print to the messaging areas.
-			resultDiv.html( '<p>' + period + ' Payments: <b class="lidd_mc_b">' + currency + result + ' ' + currency_code + '</b></p>' );
+			resultDiv.html( '<p>' + display_result + '</p>' );
 			summaryDiv.html( summary );
 
 			// Show the details div.
