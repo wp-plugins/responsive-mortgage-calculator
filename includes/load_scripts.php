@@ -49,7 +49,7 @@ function lidd_mc_enqueue_scripts() {
 			'weekly' => __( 'Weekly', 'liddmc' ),
 			'biweekly' => __( 'Bi-Weekly', 'liddmc' ),
 			'monthly' => __( 'Monthly', 'liddmc' ),
-			'ap_error' => __( 'Please enter an amortization period (decimal are allowed).', 'liddmc' ),
+			'ap_error' => __( 'Please enter an amortization period.', 'liddmc' ),
 			'p_text' => sprintf(
 				__( '%1$s Payment', 'liddmc' ),
 				'{payment_period}'
