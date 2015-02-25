@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-02-25 17:25-0500\n"
+"PO-Revision-Date: 2015-02-25 18:44-0500\n"
 "Last-Translator: \n"
 "Language-Team: liddweaver <support@liddweaver.com>\n"
 "X-Generator: Poedit 1.7.4\n"
@@ -84,26 +84,30 @@ msgstr "%2$s %1$s %3$s"
 
 #: includes/load_scripts.php:65
 msgid "For a mortgage of %1$s%2$s amortized over %3$s years, your %4$s payment is"
-msgstr ""
+msgstr "Pour une hypothèque de %2$s %1$s amorti sur %3$s ans, votre paiement %4$s est"
 
 #: includes/load_scripts.php:72
 msgid ""
 "For a mortgage of %1$s%2$s amortized over %3$s years and %4$s month, your %5$s payment is"
 msgstr ""
+"Pour une hypothèque de %2$s %1$s amorti sur %3$s ans et %4$s mois, votre paiement %5$s est"
 
 #: includes/load_scripts.php:80
 msgid ""
 "For a mortgage of %1$s%2$s amortized over %3$s years and %4$s months, your %5$s payment is"
 msgstr ""
+"Pour une hypothèque de %2$s %1$s amorti sur %3$s ans et %4$s mois, votre paiement %5$s est"
 
 #: includes/load_scripts.php:88
 msgid "For a mortgage of %1$s%2$s amortized over %3$s years and %4$s week, your %5$s payment is"
 msgstr ""
+"Pour une hypothèque de %2$s %1$s amorti sur %3$s ans et %4$s semaine, votre paiement %5$s est"
 
 #: includes/load_scripts.php:96
 msgid ""
 "For a mortgage of %1$s%2$s amortized over %3$s years and %4$s weeks, your %5$s payment is"
 msgstr ""
+"Pour une hypothèque de %2$s %1$s amorti sur %3$s ans et %4$s semaines, votre paiement %5$s est"
 
 #: includes/load_scripts.php:103
 msgid "Mortgage Payment"
