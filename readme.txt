@@ -1,6 +1,7 @@
 === Plugin Name ===
 Contributors: liddweaver
-Tags: mortgage, mortgage calculator, realty, realtor, real estate, widget, responsive, jquery
+Donate link: http://liddweaver.com/donate/
+Tags: mortgage, mortgage calculator, loan, realty, realtor, real estate, widget, responsive, jquery
 Requires at least: 3.0.1
 Tested up to: 4.1
 Stable tag: 2.1.1
