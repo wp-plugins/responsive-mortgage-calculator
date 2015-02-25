@@ -1,0 +1,353 @@
+# Copyright (C) 2015 Responsive Mortgage Calculator
+# This file is distributed under the same license as the Responsive Mortgage Calculator package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Responsive Mortgage Calculator 2.1.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/responsive-mortgage-calculator\n"
+"POT-Creation-Date: 2015-02-25 22:20:16+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-02-25 17:25-0500\n"
+"Last-Translator: \n"
+"Language-Team: liddweaver <support@liddweaver.com>\n"
+"X-Generator: Poedit 1.7.4\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: fr_CA\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: includes/LiddMCForm.php:81
+msgid "years"
+msgstr "années"
+
+#: includes/LiddMCForm.php:93 includes/load_scripts.php:51 includes/options.php:172
+#: includes/options.php:207
+msgid "Monthly"
+msgstr "Mensuel"
+
+#: includes/LiddMCForm.php:94 includes/load_scripts.php:50 includes/options.php:208
+msgid "Bi-Weekly"
+msgstr "Bimensuel"
+
+#: includes/LiddMCForm.php:95 includes/load_scripts.php:49 includes/options.php:209
+msgid "Weekly"
+msgstr "Hebdomadaire"
+
+#: includes/defaults.php:14
+msgid "Total Amount"
+msgstr "Prix demandé"
+
+#: includes/defaults.php:15
+msgid "Down Payment"
+msgstr "Mise de fonds"
+
+#: includes/defaults.php:16
+msgid "Interest Rate"
+msgstr "Taux d'intérêt"
+
+#: includes/defaults.php:17
+msgid "Amortization Period"
+msgstr "Amortissement"
+
+#: includes/defaults.php:18
+msgid "Payment Period"
+msgstr "Fréquence des versements"
+
+#: includes/defaults.php:19
+msgid "Calculate"
+msgstr "Calcul"
+
+#: includes/load_scripts.php:46
+msgid "Please enter the total amount of the mortgage."
+msgstr ""
+
+#: includes/load_scripts.php:47
+msgid "Please enter a down payment amount or leave blank."
+msgstr ""
+
+#: includes/load_scripts.php:48
+msgid "Please enter an interest rate."
+msgstr ""
+
+#: includes/load_scripts.php:52
+msgid "Please enter an amortization period."
+msgstr ""
+
+#: includes/load_scripts.php:54
+msgid "%1$s Payment"
+msgstr ""
+
+#: includes/load_scripts.php:59
+msgctxt "Currency format, eg. $2.00 USD"
+msgid "%1$s%2$s %3$s"
+msgstr "%2$s %1$s %3$s"
+
+#: includes/load_scripts.php:65
+msgid "For a mortgage of %1$s%2$s amortized over %3$s years, your %4$s payment is"
+msgstr ""
+
+#: includes/load_scripts.php:72
+msgid ""
+"For a mortgage of %1$s%2$s amortized over %3$s years and %4$s month, your %5$s payment is"
+msgstr ""
+
+#: includes/load_scripts.php:80
+msgid ""
+"For a mortgage of %1$s%2$s amortized over %3$s years and %4$s months, your %5$s payment is"
+msgstr ""
+
+#: includes/load_scripts.php:88
+msgid "For a mortgage of %1$s%2$s amortized over %3$s years and %4$s week, your %5$s payment is"
+msgstr ""
+
+#: includes/load_scripts.php:96
+msgid ""
+"For a mortgage of %1$s%2$s amortized over %3$s years and %4$s weeks, your %5$s payment is"
+msgstr ""
+
+#: includes/load_scripts.php:103
+msgid "Mortgage Payment"
+msgstr "Versement Mensuel"
+
+#: includes/load_scripts.php:104
+msgid "Total Mortgage with Interest"
+msgstr "Hypothèque totale avec intérêt"
+
+#: includes/load_scripts.php:105
+msgid "Total with Down Payment"
+msgstr "Totale avec mise de fonds"
+
+#: includes/options.php:16
+msgid "Resp Mortgage Calculator"
+msgstr "Resp Mortgage Calculator"
+
+#: includes/options.php:38
+msgid "Calculator Settings"
+msgstr "Calculez votre versement hypothécaire"
+
+#: includes/options.php:40
+msgid "Compounding period for the mortgage interest"
+msgstr ""
+
+#: includes/options.php:42
+msgid "Currency symbol"
+msgstr ""
+
+#: includes/options.php:44
+msgid "Currency code"
+msgstr ""
+
+#: includes/options.php:46
+msgid "Include the down payment field"
+msgstr ""
+
+#: includes/options.php:48
+msgid "Set a fixed payment period"
+msgstr ""
+
+#: includes/options.php:52
+msgid "Layout and Styling (CSS)"
+msgstr ""
+
+#: includes/options.php:54
+msgid "Choose a theme"
+msgstr ""
+
+#: includes/options.php:56
+msgid "Make the Payment Period select box look fancy"
+msgstr ""
+
+#: includes/options.php:58
+msgid "Adjust the vertical position of the down arrow on the fancy select box"
+msgstr ""
+
+#: includes/options.php:60
+msgid "Make it responsive"
+msgstr ""
+
+#: includes/options.php:64
+msgid "Results"
+msgstr ""
+
+#: includes/options.php:66
+msgid "Set the result summary visibility"
+msgstr ""
+
+#: includes/options.php:70
+msgid "Input Labels"
+msgstr ""
+
+#: includes/options.php:72
+msgid "Total Amount label"
+msgstr ""
+
+#: includes/options.php:74
+msgid "Down Payment label"
+msgstr ""
+
+#: includes/options.php:76
+msgid "Interest Rate label"
+msgstr ""
+
+#: includes/options.php:80
+msgid "Payment Period label"
+msgstr ""
+
+#: includes/options.php:82
+msgid "Submit button label"
+msgstr ""
+
+#: includes/options.php:86
+msgid "Input Classes"
+msgstr ""
+
+#: includes/options.php:88
+msgid "Total Amount class"
+msgstr ""
+
+#: includes/options.php:90
+msgid "Down Payment class"
+msgstr ""
+
+#: includes/options.php:92
+msgid "Interest Rate class"
+msgstr ""
+
+#: includes/options.php:94
+msgid "Amortization Period class"
+msgstr ""
+
+#: includes/options.php:96
+msgid "Payment Period class"
+msgstr ""
+
+#: includes/options.php:98
+msgid "Submit button class"
+msgstr ""
+
+#: includes/options.php:105
+msgid "Change the basic functioning and parameters for the calculator."
+msgstr ""
+
+#: includes/options.php:108
+msgid ""
+"Toggle layout and styling. Remove styling to prevent CSS from loading (but it won't be "
+"responsive any more)."
+msgstr ""
+
+#: includes/options.php:111
+msgid "Change the additional information panel settings."
+msgstr ""
+
+#: includes/options.php:114
+msgid "Set your own labels for the inputs."
+msgstr ""
+
+#: includes/options.php:117
+msgid "Add CSS classes to override styles or to hook into your theme's styling."
+msgstr ""
+
+#: includes/options.php:169
+msgid "Annually"
+msgstr ""
+
+#: includes/options.php:170
+msgid "Semi-Annually"
+msgstr ""
+
+#: includes/options.php:171
+msgid "Quarterly"
+msgstr ""
+
+#: includes/options.php:181
+msgid "Dollar"
+msgstr ""
+
+#: includes/options.php:182
+msgid "Euro"
+msgstr ""
+
+#: includes/options.php:183
+msgid "Pound"
+msgstr ""
+
+#: includes/options.php:184
+msgid "Yen"
+msgstr ""
+
+#: includes/options.php:185
+msgid "Generic"
+msgstr ""
+
+#: includes/options.php:206
+msgid "Allow user selection"
+msgstr ""
+
+#: includes/options.php:218
+msgid "Light"
+msgstr ""
+
+#: includes/options.php:219
+msgid "Dark"
+msgstr ""
+
+#: includes/options.php:220
+msgid "Use my theme's default styling"
+msgstr ""
+
+#: includes/options.php:255
+msgid "Don't include the summary"
+msgstr ""
+
+#: includes/options.php:256
+msgid "Hide the summary, but show the toggle icon"
+msgstr ""
+
+#: includes/options.php:257
+msgid "Show the summary (no toggle)"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: includes/options.php:490 includes/widget.php:36
+msgid "Responsive Mortgage Calculator"
+msgstr ""
+
+#: includes/options.php:494
+msgid ""
+"Add the calculator widget from the Widgets page or add it to a page or post using the "
+"shortcode %1$s or %2$s."
+msgstr ""
+
+#: includes/options.php:504
+msgid "Save Changes"
+msgstr ""
+
+#: includes/widget.php:32
+msgid "Display a responsive mortgage calculator."
+msgstr ""
+
+#: includes/widget.php:46
+msgid "Calculate Mortgage Payments"
+msgstr ""
+
+#: includes/widget.php:53
+msgid "Title"
+msgstr "Titre"
+
+#. Plugin URI of the plugin/theme
+msgid "http://liddweaver.com/responsive-mortgage-calculator/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Add a responsive mortgage calculator widget or use the shortcode [mortgagecalculator] or "
+"[rmc]. Plenty of options to customize it to your preference."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "liddweaver"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://liddweaver.com"
+msgstr ""
