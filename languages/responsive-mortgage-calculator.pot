@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Responsive Mortgage Calculator 2.1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/responsive-"
 "mortgage-calculator\n"
-"POT-Creation-Date: 2015-02-25 22:20:16+00:00\n"
+"POT-Creation-Date: 2015-02-26 16:34:13+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -69,56 +69,64 @@ msgid "Please enter an interest rate."
 msgstr ""
 
 #: includes/load_scripts.php:52
-msgid "Please enter an amortization period."
+msgid "Weekly Payment"
+msgstr ""
+
+#: includes/load_scripts.php:53
+msgid "Bi-Weekly Payment"
 msgstr ""
 
 #: includes/load_scripts.php:54
-msgid "%1$s Payment"
+msgid "Monthly Payment"
 msgstr ""
 
-#: includes/load_scripts.php:59
+#: includes/load_scripts.php:55
+msgid "Please enter an amortization period."
+msgstr ""
+
+#: includes/load_scripts.php:57
 msgctxt "Currency format, eg. $2.00 USD"
 msgid "%1$s%2$s %3$s"
 msgstr ""
 
-#: includes/load_scripts.php:65
+#: includes/load_scripts.php:63
 msgid ""
 "For a mortgage of %1$s%2$s amortized over %3$s years, your %4$s payment is"
 msgstr ""
 
-#: includes/load_scripts.php:72
+#: includes/load_scripts.php:70
 msgid ""
 "For a mortgage of %1$s%2$s amortized over %3$s years and %4$s month, your "
 "%5$s payment is"
 msgstr ""
 
-#: includes/load_scripts.php:80
+#: includes/load_scripts.php:78
 msgid ""
 "For a mortgage of %1$s%2$s amortized over %3$s years and %4$s months, your "
 "%5$s payment is"
 msgstr ""
 
-#: includes/load_scripts.php:88
+#: includes/load_scripts.php:86
 msgid ""
 "For a mortgage of %1$s%2$s amortized over %3$s years and %4$s week, your "
 "%5$s payment is"
 msgstr ""
 
-#: includes/load_scripts.php:96
+#: includes/load_scripts.php:94
 msgid ""
 "For a mortgage of %1$s%2$s amortized over %3$s years and %4$s weeks, your "
 "%5$s payment is"
 msgstr ""
 
-#: includes/load_scripts.php:103
+#: includes/load_scripts.php:101
 msgid "Mortgage Payment"
 msgstr ""
 
-#: includes/load_scripts.php:104
+#: includes/load_scripts.php:102
 msgid "Total Mortgage with Interest"
 msgstr ""
 
-#: includes/load_scripts.php:105
+#: includes/load_scripts.php:103
 msgid "Total with Down Payment"
 msgstr ""
 

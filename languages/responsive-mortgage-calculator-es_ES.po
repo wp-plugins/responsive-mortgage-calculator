@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Responsive Mortgage Calculator 2.1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/responsive-mortgage-calculator\n"
-"POT-Creation-Date: 2015-02-25 22:20:16+00:00\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-02-25 17:36-0500\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"POT-Creation-Date: 2015-02-26 16:34:13+00:00\n"
+"PO-Revision-Date: 2015-02-26 11:38-0500\n"
 "Last-Translator: \n"
 "Language-Team: liddweaver <support@liddweaver.com>\n"
 "Language: es_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.7.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
@@ -59,61 +59,69 @@ msgstr "Calcular"
 
 #: includes/load_scripts.php:46
 msgid "Please enter the total amount of the mortgage."
-msgstr ""
+msgstr "Escriba el monto total de la hipoteca."
 
 #: includes/load_scripts.php:47
 msgid "Please enter a down payment amount or leave blank."
-msgstr ""
+msgstr "Escriba el monto de anticipo o deje en blanco."
 
 #: includes/load_scripts.php:48
 msgid "Please enter an interest rate."
-msgstr ""
+msgstr "Agregue la tasa de interés."
 
 #: includes/load_scripts.php:52
-msgid "Please enter an amortization period."
-msgstr ""
+msgid "Weekly Payment"
+msgstr "Pago semanal"
+
+#: includes/load_scripts.php:53
+msgid "Bi-Weekly Payment"
+msgstr "Pago quincenal"
 
 #: includes/load_scripts.php:54
-msgid "%1$s Payment"
-msgstr ""
+msgid "Monthly Payment"
+msgstr "Pago mensual"
 
-#: includes/load_scripts.php:59
+#: includes/load_scripts.php:55
+msgid "Please enter an amortization period."
+msgstr "Seleccione el período de plazos."
+
+#: includes/load_scripts.php:57
 msgctxt "Currency format, eg. $2.00 USD"
 msgid "%1$s%2$s %3$s"
-msgstr ""
+msgstr "%1$s %2$s %3$s"
 
-#: includes/load_scripts.php:65
+#: includes/load_scripts.php:63
 msgid "For a mortgage of %1$s%2$s amortized over %3$s years, your %4$s payment is"
 msgstr "Para una hipoteca de %1$s %2$s amortizado en %3$s años, su pago %4$s es de"
 
-#: includes/load_scripts.php:72
+#: includes/load_scripts.php:70
 msgid ""
 "For a mortgage of %1$s%2$s amortized over %3$s years and %4$s month, your %5$s payment is"
-msgstr "Para una hipoteca de %1$s %2$s amortizado en %3$s años %4$s mes, su pago %5$s es de"
+msgstr "Para una hipoteca de %1$s %2$s amortizado en %3$s años y %4$s mes, su pago es de"
 
-#: includes/load_scripts.php:80
+#: includes/load_scripts.php:78
 msgid ""
 "For a mortgage of %1$s%2$s amortized over %3$s years and %4$s months, your %5$s payment is"
-msgstr "Para una hipoteca de %1$s %2$s amortizado en %3$s años %4$s meses, su pago %5$s es de"
+msgstr "Para una hipoteca de %1$s %2$s amortizado en %3$s años y %4$s meses, su pago es de"
 
-#: includes/load_scripts.php:88
+#: includes/load_scripts.php:86
 msgid "For a mortgage of %1$s%2$s amortized over %3$s years and %4$s week, your %5$s payment is"
-msgstr "Para una hipoteca de %1$s %2$s amortizado en %3$s años %4$s semana, su pago %5$s es de"
+msgstr "Para una hipoteca de %1$s %2$s amortizado en %3$s años y %4$s semana, su pago es de"
 
-#: includes/load_scripts.php:96
+#: includes/load_scripts.php:94
 msgid ""
 "For a mortgage of %1$s%2$s amortized over %3$s years and %4$s weeks, your %5$s payment is"
-msgstr "Para una hipoteca de %1$s %2$s amortizado en %3$s años %4$s semana, su pago %5$s es de"
+msgstr "Para una hipoteca de %1$s %2$s amortizado en %3$s años y %4$s semanas, su pago es de"
 
-#: includes/load_scripts.php:103
+#: includes/load_scripts.php:101
 msgid "Mortgage Payment"
 msgstr "Hipoteca"
 
-#: includes/load_scripts.php:104
+#: includes/load_scripts.php:102
 msgid "Total Mortgage with Interest"
 msgstr "Hipoteca total con Interés"
 
-#: includes/load_scripts.php:105
+#: includes/load_scripts.php:103
 msgid "Total with Down Payment"
 msgstr "Total con Anticipo"
 
@@ -310,7 +318,7 @@ msgstr ""
 #. Plugin Name of the plugin/theme
 #: includes/options.php:490 includes/widget.php:36
 msgid "Responsive Mortgage Calculator"
-msgstr ""
+msgstr "Responsive Mortgage Calculator"
 
 #: includes/options.php:494
 msgid ""
@@ -336,7 +344,7 @@ msgstr "título"
 
 #. Plugin URI of the plugin/theme
 msgid "http://liddweaver.com/responsive-mortgage-calculator/"
-msgstr ""
+msgstr "http://liddweaver.com/responsive-mortgage-calculator/"
 
 #. Description of the plugin/theme
 msgid ""
@@ -346,8 +354,8 @@ msgstr ""
 
 #. Author of the plugin/theme
 msgid "liddweaver"
-msgstr ""
+msgstr "liddweaver"
 
 #. Author URI of the plugin/theme
 msgid "http://liddweaver.com"
-msgstr ""
+msgstr "http://liddweaver.com"
