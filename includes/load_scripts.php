@@ -49,12 +49,10 @@ function lidd_mc_enqueue_scripts() {
 			'weekly' => __( 'Weekly', 'liddmc' ),
 			'biweekly' => __( 'Bi-Weekly', 'liddmc' ),
 			'monthly' => __( 'Monthly', 'liddmc' ),
+			'weekly_payment' => __( 'Weekly Payment', 'liddmc' ),
+			'biweekly_payment' => __( 'Bi-Weekly Payment', 'liddmc' ),
+			'monthly_payment' => __( 'Monthly Payment', 'liddmc' ),
 			'ap_error' => __( 'Please enter an amortization period.', 'liddmc' ),
-			'p_text' => sprintf(
-				__( '%1$s Payment', 'liddmc' ),
-				'{payment_period}'
-				
-			),
 			'currency_format' => $bs . sprintf(
 				_x( '%1$s%2$s %3$s', 'Currency format, eg. $2.00 USD', 'liddmc' ),
 				'{symbol}',

@@ -236,15 +236,26 @@ jQuery(document).ready(function() {
 				) + '</b></p>';
 			}
 			
-			// Payments amount
-			var display_result = lidd_mc_script_vars.p_text.replace( "{payment_period}", period );
+			// Payment amount
+			var display_result;
+			switch ( pp ) {
+				case 52:
+					display_result = lidd_mc_script_vars.weekly_payment;
+					break;
+				case 26:
+					display_result = lidd_mc_script_vars.biweekly_payment;
+					break;
+				case 12:
+				default:
+					display_result = lidd_mc_script_vars.monthly_payment;
+					break;
+			}
 			display_result = display_result + ': ' + formatCurrency(
 				lidd_mc_script_vars.currency_format,
 				currency,
 				result,
 				currency_code
 			);
-			//result = '<p>' + lidd_mc_script_vars.p_text.replace( "{payment_period}", period ) + ': <b class="lidd_mc_b">' + currency + result + ' ' + currency_code + '</b></p>';
 			
 			// Print to the messaging areas.
 			resultDiv.html( '<p>' + display_result + '</p>' );
