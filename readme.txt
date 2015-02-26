@@ -32,13 +32,23 @@ The widget is built with plenty of classes to hook into for styling, so it’s e
 
 __Plenty of Options__
 
-* Set the compounding period for your region,
-* Set your currency symbol and currency code
-* Hide the down payment field
-* Set a fixed payment period
-* Rename the field labels,
-* Set your own field labels
-* Add your own CSS classes
+* Set the interest rate compounding period for your region.
+* Set your currency symbol and currency code.
+* Hide the down payment field.
+* Set a fixed payment period.
+* Rename the field labels.
+* Set your own field labels.
+* Add your own CSS classes.
+
+__Shortcode Attributes__
+
+Use the shortcode on different pages with different field names by using shortcode attributes. They’re pretty obvious, but here’s an example:
+
+`[mortgagecalculator totalamount=“Mortgage Amount”]`
+
+or use the first letter of the original labels:
+
+`[rmc ta=“Mortgage Amount]`
 
 __Known Issues__
 
