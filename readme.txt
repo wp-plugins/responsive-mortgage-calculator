@@ -55,7 +55,7 @@ The widget and short code rely on the same jQuery script at the moment. The shor
 
 = DISCLAIMER =
 
-The calculator is for demonstration purposes only and may not reflect actual numbers for your mortgage. Assumes constant interest rate throughout amortization period; interest calculated semi-annually.
+The calculator is for demonstration purposes only and may not reflect actual numbers for your mortgage. Assumes constant interest rate throughout amortization period.
 
 It's pretty darn good, but the bank has the final say...
 
