@@ -36,8 +36,7 @@ __Plenty of Options__
 * Set your currency symbol and currency code.
 * Hide the down payment field.
 * Set a fixed payment period.
-* Rename the field labels.
-* Set your own field labels.
+* Rename the input labels.
 * Add your own CSS classes.
 
 __Shortcode Attributes__
