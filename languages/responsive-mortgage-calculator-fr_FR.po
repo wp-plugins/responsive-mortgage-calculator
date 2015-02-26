@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Responsive Mortgage Calculator 2.1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/responsive-mortgage-calculator\n"
-"POT-Creation-Date: 2015-02-26 16:34:13+00:00\n"
-"PO-Revision-Date: 2015-02-26 11:39-0500\n"
+"POT-Creation-Date: 2015-02-26 17:24:34+00:00\n"
+"PO-Revision-Date: 2015-02-26 12:47-0500\n"
 "Last-Translator: \n"
 "Language-Team: liddweaver <support@liddweaver.com>\n"
 "Language: fr_CA\n"
@@ -20,16 +20,16 @@ msgstr ""
 msgid "years"
 msgstr "années"
 
-#: includes/LiddMCForm.php:93 includes/load_scripts.php:51 includes/options.php:172
+#: includes/LiddMCForm.php:93 includes/load_scripts.php:52 includes/options.php:172
 #: includes/options.php:207
 msgid "Monthly"
 msgstr "Mensuel"
 
-#: includes/LiddMCForm.php:94 includes/load_scripts.php:50 includes/options.php:208
+#: includes/LiddMCForm.php:94 includes/load_scripts.php:51 includes/options.php:208
 msgid "Bi-Weekly"
 msgstr "Bimensuel"
 
-#: includes/LiddMCForm.php:95 includes/load_scripts.php:49 includes/options.php:209
+#: includes/LiddMCForm.php:95 includes/load_scripts.php:50 includes/options.php:209
 msgid "Weekly"
 msgstr "Hebdomadaire"
 
@@ -69,21 +69,21 @@ msgstr "Veuillez inscrire un montant de mise de fonds ou laisser vide."
 msgid "Please enter an interest rate."
 msgstr "Veuillez ajouter un taux d'intérêt."
 
-#: includes/load_scripts.php:52
+#: includes/load_scripts.php:49
+msgid "Please enter an amortization period."
+msgstr "Veuillez sélectionner l'amortissement."
+
+#: includes/load_scripts.php:53
 msgid "Weekly Payment"
 msgstr "Versement hebdomadaire"
 
-#: includes/load_scripts.php:53
+#: includes/load_scripts.php:54
 msgid "Bi-Weekly Payment"
 msgstr "Versement aux deux semaines"
 
-#: includes/load_scripts.php:54
+#: includes/load_scripts.php:55
 msgid "Monthly Payment"
 msgstr "Versement Mensuel"
-
-#: includes/load_scripts.php:55
-msgid "Please enter an amortization period."
-msgstr "Veuillez sélectionner l'amortissement."
 
 #: includes/load_scripts.php:57
 msgctxt "Currency format, eg. $2.00 USD"
@@ -133,7 +133,7 @@ msgstr "Resp Mortgage Calculator"
 
 #: includes/options.php:38
 msgid "Calculator Settings"
-msgstr "Calculez votre versement hypothécaire"
+msgstr ""
 
 #: includes/options.php:40
 msgid "Compounding period for the mortgage interest"
@@ -338,7 +338,7 @@ msgstr ""
 
 #: includes/widget.php:46
 msgid "Calculate Mortgage Payments"
-msgstr ""
+msgstr "Calculez votre versement hypothécaire"
 
 #: includes/widget.php:53
 msgid "Title"

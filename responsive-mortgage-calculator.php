@@ -9,7 +9,7 @@ Author URI: http://liddweaver.com
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Domain Path: /languages
-Text Domain: liddmc
+Text Domain: responsive-mortgage-calculator
 */
 
 
@@ -29,8 +29,9 @@ defined( 'LIDD_MC_OPTIONS' ) or define( 'LIDD_MC_OPTIONS', 'lidd_mc_options' );
 // -----------------------------------
 // Languages / Internationalization
 
+
 function lidd_mc_load_plugin_textdomain() {
-	load_plugin_textdomain('liddmc', false, basename( dirname( __FILE__ ) ) . '/languages' );
+	load_plugin_textdomain( 'responsive-mortgage-calculator', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
 add_action( 'plugins_loaded', 'lidd_mc_load_plugin_textdomain' );
 

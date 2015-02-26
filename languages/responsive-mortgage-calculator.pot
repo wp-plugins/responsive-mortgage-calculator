@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Responsive Mortgage Calculator 2.1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/responsive-"
 "mortgage-calculator\n"
-"POT-Creation-Date: 2015-02-26 16:34:13+00:00\n"
+"POT-Creation-Date: 2015-02-26 17:24:34+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,17 +17,17 @@ msgstr ""
 msgid "years"
 msgstr ""
 
-#: includes/LiddMCForm.php:93 includes/load_scripts.php:51
+#: includes/LiddMCForm.php:93 includes/load_scripts.php:52
 #: includes/options.php:172 includes/options.php:207
 msgid "Monthly"
 msgstr ""
 
-#: includes/LiddMCForm.php:94 includes/load_scripts.php:50
+#: includes/LiddMCForm.php:94 includes/load_scripts.php:51
 #: includes/options.php:208
 msgid "Bi-Weekly"
 msgstr ""
 
-#: includes/LiddMCForm.php:95 includes/load_scripts.php:49
+#: includes/LiddMCForm.php:95 includes/load_scripts.php:50
 #: includes/options.php:209
 msgid "Weekly"
 msgstr ""
@@ -68,20 +68,20 @@ msgstr ""
 msgid "Please enter an interest rate."
 msgstr ""
 
-#: includes/load_scripts.php:52
-msgid "Weekly Payment"
+#: includes/load_scripts.php:49
+msgid "Please enter an amortization period."
 msgstr ""
 
 #: includes/load_scripts.php:53
-msgid "Bi-Weekly Payment"
+msgid "Weekly Payment"
 msgstr ""
 
 #: includes/load_scripts.php:54
-msgid "Monthly Payment"
+msgid "Bi-Weekly Payment"
 msgstr ""
 
 #: includes/load_scripts.php:55
-msgid "Please enter an amortization period."
+msgid "Monthly Payment"
 msgstr ""
 
 #: includes/load_scripts.php:57

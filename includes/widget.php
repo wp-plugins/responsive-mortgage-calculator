@@ -29,11 +29,11 @@ class lidd_mc_widget extends WP_Widget
 	{
 		$widget_options = array(
 			'classname' => 'lidd_mc_widget',
-			'description' => __( 'Display a responsive mortgage calculator.', 'liddmc' )
+			'description' => __( 'Display a responsive mortgage calculator.', 'responsive-mortgage-calculator' )
 		);
 		
 		// Pass the options to WP_Widget to create the widget.
-		$this->WP_Widget( 'lidd_mc_widget', __( 'Responsive Mortgage Calculator', 'liddmc' ) );
+		$this->WP_Widget( 'lidd_mc_widget', __( 'Responsive Mortgage Calculator', 'responsive-mortgage-calculator' ) );
 	}
 	
 	/**
@@ -43,7 +43,7 @@ class lidd_mc_widget extends WP_Widget
 	 */
 	function form( $instance )
 	{
-		$defaults = array( 'title' => __( 'Calculate Mortgage Payments', 'liddmc' ) );
+		$defaults = array( 'title' => __( 'Calculate Mortgage Payments', 'responsive-mortgage-calculator' ) );
 		$instance = wp_parse_args( (array) $instance, $defaults );
 		$title = $instance['title'];
 		

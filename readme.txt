@@ -121,3 +121,8 @@ You can insert the mortgage calculator into a page or post using the short code 
 = 2.1.1 =
 
 * Added missing files
+
+= 2.1.2 =
+
+* Completed internationalization
+* Added front end French and Spanish translations - thanks to designium

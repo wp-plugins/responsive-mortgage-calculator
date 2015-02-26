@@ -78,7 +78,7 @@ class LiddMCForm
 		// Amortization period
 		$ap = $factory->newInput( 'text', 'lidd_mc_amortization_period' );
 		$ap->setLabel( $options['amortization_period_label'] );
-		$ap->setPlaceholder( __( 'years', 'liddmc' ) );
+		$ap->setPlaceholder( __( 'years', 'responsive-mortgage-calculator' ) );
 		$ap->setClass( $options['amortization_period_class'] );
 	
 		// Payment period
@@ -90,9 +90,9 @@ class LiddMCForm
 			$pp->setLabel( $options['payment_period_label'] );
 			$pp->setClass( $options['payment_period_class'] );
 			$pp->setOptions( array(
-					12 => __( 'Monthly', 'liddmc' ),
-					26 => __( 'Bi-Weekly', 'liddmc' ),
-					52 => __( 'Weekly', 'liddmc' )
+					12 => __( 'Monthly', 'responsive-mortgage-calculator' ),
+					26 => __( 'Bi-Weekly', 'responsive-mortgage-calculator' ),
+					52 => __( 'Weekly', 'responsive-mortgage-calculator' )
 				) );
 		}
 

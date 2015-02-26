@@ -13,7 +13,7 @@ add_action( 'admin_menu', 'lidd_mc_add_settings_page' );
  * Callback function to register the settings page and menu option.
  */
 function lidd_mc_add_settings_page() {
-	add_options_page( 'Responsive Mortgage Calculator', __( 'Resp Mortgage Calculator', 'liddmc' ), 'manage_options', LIDD_MC_OPTIONS, 'lidd_mc_settings_page' );
+	add_options_page( 'Responsive Mortgage Calculator', __( 'Resp Mortgage Calculator', 'responsive-mortgage-calculator' ), 'manage_options', LIDD_MC_OPTIONS, 'lidd_mc_settings_page' );
 }
 
 // Register the specific sections and settings on the settings page.
@@ -35,86 +35,86 @@ function lidd_mc_admin_init() {
 	// Create settings page sections
 	// --------------------------------------------
 	// Calculator settings
-	add_settings_section( 'lidd_mc_calcsettings', __( 'Calculator Settings', 'liddmc' ), 'lidd_mc_options_calcsettings_text', LIDD_MC_OPTIONS );
+	add_settings_section( 'lidd_mc_calcsettings', __( 'Calculator Settings', 'responsive-mortgage-calculator' ), 'lidd_mc_options_calcsettings_text', LIDD_MC_OPTIONS );
 	// Compounding period
-	add_settings_field( 'lidd_mc_compounding_period', __( 'Compounding period for the mortgage interest', 'liddmc' ), 'lidd_mc_settings_compounding_period', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	add_settings_field( 'lidd_mc_compounding_period', __( 'Compounding period for the mortgage interest', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_compounding_period', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Currency symbol
-	add_settings_field( 'lidd_mc_currency', __( 'Currency symbol', 'liddmc' ), 'lidd_mc_settings_currency', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	add_settings_field( 'lidd_mc_currency', __( 'Currency symbol', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_currency', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Currency code
-	add_settings_field( 'lidd_mc_currency_code', __( 'Currency code', 'liddmc' ) . ' &ndash; <a href="http://www.currency-iso.org/">ISO 4217</a>', 'lidd_mc_settings_currency_code', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	add_settings_field( 'lidd_mc_currency_code', __( 'Currency code', 'responsive-mortgage-calculator' ) . ' &ndash; <a href="http://www.currency-iso.org/">ISO 4217</a>', 'lidd_mc_settings_currency_code', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Include Down Payment field
-	add_settings_field( 'lidd_mc_down_payment_visible', __( 'Include the down payment field', 'liddmc' ), 'lidd_mc_settings_down_payment_visible', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	add_settings_field( 'lidd_mc_down_payment_visible', __( 'Include the down payment field', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_down_payment_visible', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Set a fixed Payment Period (creates a hidden input with a set payment period)
-	add_settings_field( 'lidd_mc_fixed_payment_period', __( 'Set a fixed payment period', 'liddmc' ), 'lidd_mc_settings_fixed_payment_period', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	add_settings_field( 'lidd_mc_fixed_payment_period', __( 'Set a fixed payment period', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_fixed_payment_period', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 
 	// --------------------------------------------
 	// General styling
-	add_settings_section( 'lidd_mc_css', __( 'Layout and Styling (CSS)', 'liddmc' ), 'lidd_mc_options_css_text', LIDD_MC_OPTIONS );
+	add_settings_section( 'lidd_mc_css', __( 'Layout and Styling (CSS)', 'responsive-mortgage-calculator' ), 'lidd_mc_options_css_text', LIDD_MC_OPTIONS );
 	// Theme (light, dark, none)
-	add_settings_field( 'lidd_mc_theme', __( 'Choose a theme', 'liddmc' ), 'lidd_mc_settings_theme', LIDD_MC_OPTIONS, 'lidd_mc_css' );
+	add_settings_field( 'lidd_mc_theme', __( 'Choose a theme', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_theme', LIDD_MC_OPTIONS, 'lidd_mc_css' );
 	// Include fancy payment period styles
-	add_settings_field( 'lidd_mc_select_style', __( 'Make the Payment Period select box look fancy', 'liddmc' ), 'lidd_mc_settings_select_style', LIDD_MC_OPTIONS, 'lidd_mc_css' );
+	add_settings_field( 'lidd_mc_select_style', __( 'Make the Payment Period select box look fancy', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_select_style', LIDD_MC_OPTIONS, 'lidd_mc_css' );
 	// Fancy payment period down arrow position
-	add_settings_field( 'lidd_mc_select_pointer', __( 'Adjust the vertical position of the down arrow on the fancy select box', 'liddmc' ), 'lidd_mc_settings_select_pointer', LIDD_MC_OPTIONS, 'lidd_mc_css' );
+	add_settings_field( 'lidd_mc_select_pointer', __( 'Adjust the vertical position of the down arrow on the fancy select box', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_select_pointer', LIDD_MC_OPTIONS, 'lidd_mc_css' );
 	// Include responsive styles
-	add_settings_field( 'lidd_mc_css_layout', __( 'Make it responsive', 'liddmc' ), 'lidd_mc_settings_css_layout', LIDD_MC_OPTIONS, 'lidd_mc_css' );
+	add_settings_field( 'lidd_mc_css_layout', __( 'Make it responsive', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_css_layout', LIDD_MC_OPTIONS, 'lidd_mc_css' );
 
 	// --------------------------------------------
 	// Results
-	add_settings_section( 'lidd_mc_results', __( 'Results', 'liddmc' ), 'lidd_mc_options_results_text', LIDD_MC_OPTIONS );
+	add_settings_section( 'lidd_mc_results', __( 'Results', 'responsive-mortgage-calculator' ), 'lidd_mc_options_results_text', LIDD_MC_OPTIONS );
 	// Additional information panel (0 = hide, 1 = toggle, 2 = always show)
-	add_settings_field( 'lidd_mc_summary', __( 'Set the result summary visibility', 'liddmc' ), 'lidd_mc_settings_summary', LIDD_MC_OPTIONS, 'lidd_mc_results' );
+	add_settings_field( 'lidd_mc_summary', __( 'Set the result summary visibility', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_summary', LIDD_MC_OPTIONS, 'lidd_mc_results' );
 
 	// --------------------------------------------
 	// Labels
-	add_settings_section( 'lidd_mc_labels', __( 'Input Labels', 'liddmc' ), 'lidd_mc_options_labels_text', LIDD_MC_OPTIONS );
+	add_settings_section( 'lidd_mc_labels', __( 'Input Labels', 'responsive-mortgage-calculator' ), 'lidd_mc_options_labels_text', LIDD_MC_OPTIONS );
 	// Total Amount label
-	add_settings_field( 'lidd_mc_total_amount_label', __( 'Total Amount label', 'liddmc' ), 'lidd_mc_settings_total_amount_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
+	add_settings_field( 'lidd_mc_total_amount_label', __( 'Total Amount label', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_total_amount_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
 	// Down Payment label
-	add_settings_field( 'lidd_mc_down_payment_label', __( 'Down Payment label', 'liddmc' ), 'lidd_mc_settings_down_payment_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
+	add_settings_field( 'lidd_mc_down_payment_label', __( 'Down Payment label', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_down_payment_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
 	// Interest Rate label
-	add_settings_field( 'lidd_mc_interest_rate_label', __( 'Interest Rate label', 'liddmc' ), 'lidd_mc_settings_interest_rate_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
+	add_settings_field( 'lidd_mc_interest_rate_label', __( 'Interest Rate label', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_interest_rate_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
 	// Amortization Period label
 	add_settings_field( 'lidd_mc_amortization_period_label', 'Amortization Period label', 'lidd_mc_settings_amortization_period_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
 	// Payment Period label
-	add_settings_field( 'lidd_mc_payment_period_label', __( 'Payment Period label', 'liddmc' ), 'lidd_mc_settings_payment_period_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
+	add_settings_field( 'lidd_mc_payment_period_label', __( 'Payment Period label', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_payment_period_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
 	// Submit label
-	add_settings_field( 'lidd_mc_submit_label', __( 'Submit button label', 'liddmc' ), 'lidd_mc_settings_submit_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
+	add_settings_field( 'lidd_mc_submit_label', __( 'Submit button label', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_submit_label', LIDD_MC_OPTIONS, 'lidd_mc_labels' );
 
 	// --------------------------------------------
 	// Classes
-	add_settings_section( 'lidd_mc_classes', __( 'Input Classes', 'liddmc' ), 'lidd_mc_options_classes_text', LIDD_MC_OPTIONS );
+	add_settings_section( 'lidd_mc_classes', __( 'Input Classes', 'responsive-mortgage-calculator' ), 'lidd_mc_options_classes_text', LIDD_MC_OPTIONS );
 	// Total Amount class
-	add_settings_field( 'lidd_mc_total_amount_class', __( 'Total Amount class', 'liddmc' ), 'lidd_mc_settings_total_amount_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
+	add_settings_field( 'lidd_mc_total_amount_class', __( 'Total Amount class', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_total_amount_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
 	// Down Payment class
-	add_settings_field( 'lidd_mc_down_payment_class', __( 'Down Payment class', 'liddmc' ), 'lidd_mc_settings_down_payment_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
+	add_settings_field( 'lidd_mc_down_payment_class', __( 'Down Payment class', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_down_payment_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
 	// Interest Rate class
-	add_settings_field( 'lidd_mc_interest_rate_class', __( 'Interest Rate class', 'liddmc' ), 'lidd_mc_settings_interest_rate_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
+	add_settings_field( 'lidd_mc_interest_rate_class', __( 'Interest Rate class', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_interest_rate_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
 	// Amortization Period class
-	add_settings_field( 'lidd_mc_amortization_period_class', __( 'Amortization Period class', 'liddmc' ), 'lidd_mc_settings_amortization_period_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
+	add_settings_field( 'lidd_mc_amortization_period_class', __( 'Amortization Period class', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_amortization_period_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
 	// Payment Period class
-	add_settings_field( 'lidd_mc_payment_period_class', __( 'Payment Period class', 'liddmc' ), 'lidd_mc_settings_payment_period_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
+	add_settings_field( 'lidd_mc_payment_period_class', __( 'Payment Period class', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_payment_period_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
 	// Submit class
-	add_settings_field( 'lidd_mc_submit_class', __( 'Submit button class', 'liddmc' ), 'lidd_mc_settings_submit_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
+	add_settings_field( 'lidd_mc_submit_class', __( 'Submit button class', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_submit_class', LIDD_MC_OPTIONS, 'lidd_mc_classes' );
 	
 }
 
 // --------------------------------------------
 // Settings section text functions.
 function lidd_mc_options_calcsettings_text() {
-	echo '<p>' . __( 'Change the basic functioning and parameters for the calculator.', 'liddmc' ) . '</p>';
+	echo '<p>' . __( 'Change the basic functioning and parameters for the calculator.', 'responsive-mortgage-calculator' ) . '</p>';
 }
 function lidd_mc_options_css_text() {
-	echo '<p>' . __( 'Toggle layout and styling. Remove styling to prevent CSS from loading (but it won\'t be responsive any more).', 'liddmc' ) . '</p>';
+	echo '<p>' . __( 'Toggle layout and styling. Remove styling to prevent CSS from loading (but it won\'t be responsive any more).', 'responsive-mortgage-calculator' ) . '</p>';
 }
 function lidd_mc_options_results_text() {
-	echo '<p>' . __( 'Change the additional information panel settings.', 'liddmc' ) . '</p>';
+	echo '<p>' . __( 'Change the additional information panel settings.', 'responsive-mortgage-calculator' ) . '</p>';
 }
 function lidd_mc_options_labels_text() {
-	echo '<p>' . __( 'Set your own labels for the inputs.', 'liddmc' ) . '</p>';
+	echo '<p>' . __( 'Set your own labels for the inputs.', 'responsive-mortgage-calculator' ) . '</p>';
 }
 function lidd_mc_options_classes_text() {
-	echo '<p>' . __( 'Add CSS classes to override styles or to hook into your theme\'s styling.', 'liddmc' ) . '</p>';
+	echo '<p>' . __( 'Add CSS classes to override styles or to hook into your theme\'s styling.', 'responsive-mortgage-calculator' ) . '</p>';
 }
 
 
@@ -166,10 +166,10 @@ function lidd_mc_settings_selectbox( $key, $options ) {
  */
 function lidd_mc_settings_compounding_period() {
 	$options = array(
-		1 => __( 'Annually', 'liddmc' ),
-		2 => __( 'Semi-Annually', 'liddmc' ), 
-		4 => __( 'Quarterly', 'liddmc' ),
-		12 => __( 'Monthly', 'liddmc' )
+		1 => __( 'Annually', 'responsive-mortgage-calculator' ),
+		2 => __( 'Semi-Annually', 'responsive-mortgage-calculator' ), 
+		4 => __( 'Quarterly', 'responsive-mortgage-calculator' ),
+		12 => __( 'Monthly', 'responsive-mortgage-calculator' )
 	);
 	lidd_mc_settings_selectbox( 'compounding_period', $options );
 }
@@ -178,11 +178,11 @@ function lidd_mc_settings_compounding_period() {
  */
 function lidd_mc_settings_currency() {
 	$options = array(
-		'$' => '$ - ' . __( 'Dollar', 'liddmc' ),
-		'€' => '€ - ' . __( 'Euro', 'liddmc' ),
-		'£' => '£ - ' . __( 'Pound', 'liddmc' ),
-		'¥' => '¥ - ' . __( 'Yen', 'liddmc' ),
-		'¤' => '¤ - ' . __( 'Generic', 'liddmc' )
+		'$' => '$ - ' . __( 'Dollar', 'responsive-mortgage-calculator' ),
+		'€' => '€ - ' . __( 'Euro', 'responsive-mortgage-calculator' ),
+		'£' => '£ - ' . __( 'Pound', 'responsive-mortgage-calculator' ),
+		'¥' => '¥ - ' . __( 'Yen', 'responsive-mortgage-calculator' ),
+		'¤' => '¤ - ' . __( 'Generic', 'responsive-mortgage-calculator' )
 	);
 	lidd_mc_settings_selectbox( 'currency', $options );
 }
@@ -203,10 +203,10 @@ function lidd_mc_settings_down_payment_visible() {
  */
 function lidd_mc_settings_fixed_payment_period() {
 	$options = array(
-		'0' => __( 'Allow user selection', 'liddmc' ),
-		'12' => __( 'Monthly', 'liddmc' ),
-		'26' => __( 'Bi-Weekly', 'liddmc' ),
-		'52' => __( 'Weekly', 'liddmc' )
+		'0' => __( 'Allow user selection', 'responsive-mortgage-calculator' ),
+		'12' => __( 'Monthly', 'responsive-mortgage-calculator' ),
+		'26' => __( 'Bi-Weekly', 'responsive-mortgage-calculator' ),
+		'52' => __( 'Weekly', 'responsive-mortgage-calculator' )
 	);
 	lidd_mc_settings_selectbox( 'payment_period', $options );
 }
@@ -215,9 +215,9 @@ function lidd_mc_settings_fixed_payment_period() {
  */
 function lidd_mc_settings_theme() {
 	$options = array(
-		'light' => __( 'Light', 'liddmc' ), 
-		'dark' => __( 'Dark', 'liddmc' ),
-		'none' => __( 'Use my theme\'s default styling', 'liddmc' )
+		'light' => __( 'Light', 'responsive-mortgage-calculator' ), 
+		'dark' => __( 'Dark', 'responsive-mortgage-calculator' ),
+		'none' => __( 'Use my theme\'s default styling', 'responsive-mortgage-calculator' )
 	);
 	lidd_mc_settings_selectbox( 'theme', $options );
 }
@@ -252,9 +252,9 @@ function lidd_mc_settings_css_layout() {
  */
 function lidd_mc_settings_summary() {
 	$options = array(
-		0 => __( 'Don\'t include the summary', 'liddmc' ), 
-		1 => __( 'Hide the summary, but show the toggle icon', 'liddmc' ),
-		2 => __( 'Show the summary (no toggle)', 'liddmc' )
+		0 => __( 'Don\'t include the summary', 'responsive-mortgage-calculator' ), 
+		1 => __( 'Hide the summary, but show the toggle icon', 'responsive-mortgage-calculator' ),
+		2 => __( 'Show the summary (no toggle)', 'responsive-mortgage-calculator' )
 	);
 	lidd_mc_settings_selectbox( 'summary', $options );
 	
@@ -487,11 +487,11 @@ function lidd_mc_validate_options( $input ) {
 function lidd_mc_settings_page() {
 	?>
 	<div class="wrap">
-		<h2><?php esc_html_e('Responsive Mortgage Calculator', 'liddmc' ); ?></h2>
+		<h2><?php esc_html_e('Responsive Mortgage Calculator', 'responsive-mortgage-calculator' ); ?></h2>
 		<p><?php
 			
 		printf(
-			__('Add the calculator widget from the Widgets page or add it to a page or post using the shortcode %1$s or %2$s.', 'liddmc'),
+			__('Add the calculator widget from the Widgets page or add it to a page or post using the shortcode %1$s or %2$s.', 'responsive-mortgage-calculator'),
 			'[mortgagecalculator]',
 			'[rmc]'
 		);
@@ -501,7 +501,7 @@ function lidd_mc_settings_page() {
 		<form action="options.php" method="post">
 			<?php settings_fields( LIDD_MC_OPTIONS ); ?>
 			<?php do_settings_sections( LIDD_MC_OPTIONS ); ?>
-			<input name="submit" type="submit" value="<?php esc_attr_e( 'Save Changes', 'liddmc' ); ?>" class="button button-primary" />
+			<input name="submit" type="submit" value="<?php esc_attr_e( 'Save Changes', 'responsive-mortgage-calculator' ); ?>" class="button button-primary" />
 		</form>
 	</div>
 	<?php

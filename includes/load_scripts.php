@@ -43,31 +43,31 @@ function lidd_mc_enqueue_scripts() {
 	$bs = '<b class="lidd_mc_b">';
 	$be = '</b>';
 	wp_localize_script( 'lidd_mc', 'lidd_mc_script_vars', array(
-			'ta_error' => __( 'Please enter the total amount of the mortgage.', 'liddmc' ),
-			'dp_error' => __( 'Please enter a down payment amount or leave blank.', 'liddmc' ),
-			'ir_error' => __( 'Please enter an interest rate.', 'liddmc' ),
-			'ap_error' => __( 'Please enter an amortization period.', 'liddmc' ),
-			'weekly' => __( 'Weekly', 'liddmc' ),
-			'biweekly' => __( 'Bi-Weekly', 'liddmc' ),
-			'monthly' => __( 'Monthly', 'liddmc' ),
-			'weekly_payment' => __( 'Weekly Payment', 'liddmc' ),
-			'biweekly_payment' => __( 'Bi-Weekly Payment', 'liddmc' ),
-			'monthly_payment' => __( 'Monthly Payment', 'liddmc' ),
+			'ta_error' => __( 'Please enter the total amount of the mortgage.', 'responsive-mortgage-calculator' ),
+			'dp_error' => __( 'Please enter a down payment amount or leave blank.', 'responsive-mortgage-calculator' ),
+			'ir_error' => __( 'Please enter an interest rate.', 'responsive-mortgage-calculator' ),
+			'ap_error' => __( 'Please enter an amortization period.', 'responsive-mortgage-calculator' ),
+			'weekly' => __( 'Weekly', 'responsive-mortgage-calculator' ),
+			'biweekly' => __( 'Bi-Weekly', 'responsive-mortgage-calculator' ),
+			'monthly' => __( 'Monthly', 'responsive-mortgage-calculator' ),
+			'weekly_payment' => __( 'Weekly Payment', 'responsive-mortgage-calculator' ),
+			'biweekly_payment' => __( 'Bi-Weekly Payment', 'responsive-mortgage-calculator' ),
+			'monthly_payment' => __( 'Monthly Payment', 'responsive-mortgage-calculator' ),
 			'currency_format' => $bs . sprintf(
-				_x( '%1$s%2$s %3$s', 'Currency format, eg. $2.00 USD', 'liddmc' ),
+				_x( '%1$s%2$s %3$s', 'Currency format, eg. $2.00 USD', 'responsive-mortgage-calculator' ),
 				'{symbol}',
 				'{amount}',
 				'{code}'
 			) . $be,
 			'sy_text' => sprintf( // Summary with number of years
-				__( 'For a mortgage of %1$s%2$s amortized over %3$s years, your %4$s payment is', 'liddmc' ),
+				__( 'For a mortgage of %1$s%2$s amortized over %3$s years, your %4$s payment is', 'responsive-mortgage-calculator' ),
 				$bs . '{currency}' . $be,
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
 				$bs . '{payment_period}' . $be
 			),
 			'sym1_text' => sprintf( // Summary with years and months
-				__( 'For a mortgage of %1$s%2$s amortized over %3$s years and %4$s month, your %5$s payment is', 'liddmc' ),
+				__( 'For a mortgage of %1$s%2$s amortized over %3$s years and %4$s month, your %5$s payment is', 'responsive-mortgage-calculator' ),
 				$bs . '{currency}' . $be,
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
@@ -75,7 +75,7 @@ function lidd_mc_enqueue_scripts() {
 				$bs . '{payment_period}' . $be
 			),
 			'sym_text' => sprintf( // Summary with years and months
-				__( 'For a mortgage of %1$s%2$s amortized over %3$s years and %4$s months, your %5$s payment is', 'liddmc' ),
+				__( 'For a mortgage of %1$s%2$s amortized over %3$s years and %4$s months, your %5$s payment is', 'responsive-mortgage-calculator' ),
 				$bs . '{currency}' . $be,
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
@@ -83,7 +83,7 @@ function lidd_mc_enqueue_scripts() {
 				$bs . '{payment_period}' . $be
 			),
 			'syw1_text' => sprintf( // Summary with years and weeks
-				__( 'For a mortgage of %1$s%2$s amortized over %3$s years and %4$s week, your %5$s payment is', 'liddmc' ),
+				__( 'For a mortgage of %1$s%2$s amortized over %3$s years and %4$s week, your %5$s payment is', 'responsive-mortgage-calculator' ),
 				$bs . '{currency}' . $be,
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
@@ -91,16 +91,16 @@ function lidd_mc_enqueue_scripts() {
 				$bs . '{payment_period}' . $be
 			),
 			'syw_text' => sprintf( // Summary with years and weeks
-				__( 'For a mortgage of %1$s%2$s amortized over %3$s years and %4$s weeks, your %5$s payment is', 'liddmc' ),
+				__( 'For a mortgage of %1$s%2$s amortized over %3$s years and %4$s weeks, your %5$s payment is', 'responsive-mortgage-calculator' ),
 				$bs . '{currency}' . $be,
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
 				$bs . '{amortization_weeks}' . $be,
 				$bs . '{payment_period}' . $be
 			),
-			'mp_text' => __( 'Mortgage Payment', 'liddmc' ),
-			'tmwi_text' => __( 'Total Mortgage with Interest', 'liddmc' ),
-			'twdp_text' => __( 'Total with Down Payment', 'liddmc' ),
+			'mp_text' => __( 'Mortgage Payment', 'responsive-mortgage-calculator' ),
+			'tmwi_text' => __( 'Total Mortgage with Interest', 'responsive-mortgage-calculator' ),
+			'twdp_text' => __( 'Total with Down Payment', 'responsive-mortgage-calculator' ),
 		)
 	);
 	// Only enqueue the style if styles are on
