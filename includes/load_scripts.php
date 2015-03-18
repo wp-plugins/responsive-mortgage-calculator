@@ -6,42 +6,39 @@
  * @since 2.0.0
  */
 
-// Load JS and CSS if the widget is active.
-add_action( 'init', 'lidd_mc_check_widget' );
-
-function lidd_mc_check_widget() {
-	if ( is_active_widget( '', '', 'lidd_mc_widget' ) ) {
-		// Call the function to enqueue the style and script.
-		lidd_mc_enqueue_scripts();
-	}
+// Check if widget is active
+function lidd_mc_detect_widget() {
+	return is_active_widget( false, false, 'lidd_mc_widget', true );
 }
 
-// Make sure the stylesheet and jquery is included in the header if the shortcode is called.
-add_action( 'wp', 'lidd_mc_detect_shortcode' );
-
+// Check if the shortcode is included in the content.
 function lidd_mc_detect_shortcode() {
 	global $post;
 	
 	$pattern = get_shortcode_regex();
 	
 	// Check the content.
-	if ( preg_match_all( '/' . $pattern . '/s', $post->post_content, $matches )
+	return ( preg_match_all( '/' . $pattern . '/s', $post->post_content, $matches )
 		&& array_key_exists( 2, $matches ) 
-		&& ( in_array( 'mortgagecalculator', $matches[2] ) || in_array( 'rmc', $matches[2] ) ) ) {
-		
-			// Call the function to enqueue the style and script.
-			lidd_mc_enqueue_scripts();
-		
-	}
+		&& ( in_array( 'mortgagecalculator', $matches[2] ) || in_array( 'rmc', $matches[2] ) )
+	);
 }
 
-// Function to enqueue the stylesheet and JavaScript.
-// Called for the widget or the shortcode.
-function lidd_mc_enqueue_scripts() {
-	wp_enqueue_script( 'lidd_mc', LIDD_MC_URL . 'js/lidd-mc.js', 'jquery', '2.0.1', true );
-	// Localize script
+// Check whether to load JS and CSS
+function lidd_mc_are_scripts_required() {
+	if ( lidd_mc_detect_widget() || lidd_mc_detect_shortcode() ) {
+		lidd_mc_enqueue_scripts();
+	}
+}
+add_action( 'wp', 'lidd_mc_are_scripts_required' );
+
+// Localize JavaScript
+function lidd_mc_localize_script() {
+	
+	// HTML wrapper on return values 
 	$bs = '<b class="lidd_mc_b">';
 	$be = '</b>';
+	
 	wp_localize_script( 'lidd_mc', 'lidd_mc_script_vars', array(
 			'ta_error' => __( 'Please enter the total amount of the mortgage.', 'responsive-mortgage-calculator' ),
 			'dp_error' => __( 'Please enter a down payment amount or leave blank.', 'responsive-mortgage-calculator' ),
@@ -103,9 +100,22 @@ function lidd_mc_enqueue_scripts() {
 			'twdp_text' => __( 'Total with Down Payment', 'responsive-mortgage-calculator' ),
 		)
 	);
-	// Only enqueue the style if styles are on
+}
+
+// Function to enqueue JS and CSS
+function lidd_mc_enqueue_scripts() {
+	
+	// Enqueue script
+	wp_enqueue_script( 'lidd_mc', LIDD_MC_URL . 'js/lidd-mc.js', 'jquery', '2.1.3', true );
+	
+	// Localize script
+	lidd_mc_localize_script();
+	
+	// Get options to check for styling
 	$options = get_option( LIDD_MC_OPTIONS );
-	if ( $options['css_layout'] || $options['select_style'] || $options['theme'] != 'none' ) {
-		wp_enqueue_style( 'lidd_mc', LIDD_MC_URL . 'css/style.css', '', '2.1.2', 'screen' );
+	
+	// Enqueue styles if needed
+	if ( $options['css_layout'] || $options['theme'] != 'none' ) {
+		wp_enqueue_style( 'lidd_mc', LIDD_MC_URL . 'css/style.css', '', '2.1.3', 'screen' );
 	}
 }

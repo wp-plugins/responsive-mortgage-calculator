@@ -10,7 +10,7 @@
 
 include ( LIDD_MC_ROOT . 'includes/LiddMCOptions.php' );
 include ( LIDD_MC_ROOT . 'includes/load_form.php' );
-include ( LIDD_MC_ROOT . 'includes/load_scripts.php' );
-include ( LIDD_MC_ROOT . 'includes/options.php' );
 include ( LIDD_MC_ROOT . 'includes/shortcode.php' );
 include ( LIDD_MC_ROOT . 'includes/widget.php' );
+include ( LIDD_MC_ROOT . 'includes/load_scripts.php' );
+include ( LIDD_MC_ROOT . 'includes/options.php' );
