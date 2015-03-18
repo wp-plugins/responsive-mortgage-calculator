@@ -24,11 +24,11 @@ The calculator allows your website visitors to estimate their mortgage entering:
 * the amortization period
 * and they can select a payment period, either monthly, bi-weekly, or weekly.
 
-The payment result is displayed below the form - very simply and very easy to follow. But for the savvy user, a click on the information icon reveals more details…
+The payment result is displayed below the form - very simply and very easy to follow. For the savvy user, a click on the information icon reveals more details…
 
 __Redesign It__
 
-The widget is built with plenty of classes to hook into for styling, so it’s easy to override the included stylesheet. There are settings to adjust the styling, a light and a dark theme, or you can remove the styling entirely and use your themes styling.
+There are settings to adjust the styling, a light and a dark theme, or you can remove the styling entirely and use your themes styling. The HTML is built with plenty of classes, so it’s easy to override the included stylesheet with your own CSS. 
 
 __Plenty of Options__
 
