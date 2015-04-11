@@ -74,6 +74,7 @@ class LiddMCForm
 		$ir->setLabel( $options['interest_rate_label'] );
 		$ir->setPlaceholder( '%' );
 		$ir->setClass( $options['interest_rate_class'] );
+		$ir->setValue( $options['interest_rate_value'] );
 	
 		// Amortization period
 		$ap = $factory->newInput( 'text', 'lidd_mc_amortization_period' );

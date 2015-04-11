@@ -16,11 +16,12 @@ class LiddMCTextInput extends LiddMCInputExtended
 	 * @param  string  $theme           The CSS theme for the form.
 	 * @param  int     $css_layout      Whether to apply responsive styling to the form.
 	 */
-	public function __construct( $name, $theme, $css_layout )
+	public function __construct( $name, $theme, $css_layout, $value = null )
 	{
 		$this->name = $name;
 		$this->theme = $theme;
 		$this->css_layout = $css_layout;
+		$this->value = $value;
 	}
 	
 	/**
@@ -31,9 +32,10 @@ class LiddMCTextInput extends LiddMCInputExtended
 	public function buildInput()
 	{
 		// Create the input
-		$input = '<input type="text" name="' . esc_attr( $this->name ) . '" id="' . esc_attr( $this->name ) . '" ';
-		$input .= isset( $this->placeholder ) ? 'placeholder="' . esc_attr( $this->placeholder ) . '"' : '';
-		$input .= '/>';
+		$input = '<input type="text" name="' . esc_attr( $this->name ) . '" id="' . esc_attr( $this->name ) . '"';
+		$input .= isset( $this->placeholder ) ? ' placeholder="' . esc_attr( $this->placeholder ) . '"' : '';
+		$input .= isset( $this->value ) ? ' value="' . esc_attr( $this->value ) . '"' : '';
+		$input .= ' />';
 		
 		return $input;
 	}

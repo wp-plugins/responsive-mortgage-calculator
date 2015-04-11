@@ -27,5 +27,6 @@ return array(
 	'compounding_period' => 2,
 	'currency' => '$',
 	'currency_code' => null,
-	'summary' => 1
+	'summary' => 1,
+	'interest_rate_value' => null
 );

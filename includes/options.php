@@ -44,6 +44,8 @@ function lidd_mc_admin_init() {
 	add_settings_field( 'lidd_mc_currency_code', __( 'Currency code', 'responsive-mortgage-calculator' ) . ' &ndash; <a href="http://www.currency-iso.org/">ISO 4217</a>', 'lidd_mc_settings_currency_code', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Include Down Payment field
 	add_settings_field( 'lidd_mc_down_payment_visible', __( 'Include the down payment field', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_down_payment_visible', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	// Set a default interest rate
+	add_settings_field( 'lidd_mc_interest_rate_value', __( 'Set a default interest rate', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_interest_rate_value', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Set a fixed Payment Period (creates a hidden input with a set payment period)
 	add_settings_field( 'lidd_mc_fixed_payment_period', __( 'Set a fixed payment period', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_fixed_payment_period', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 
@@ -199,6 +201,13 @@ function lidd_mc_settings_down_payment_visible() {
 	lidd_mc_settings_checkbox( 'down_payment_visible' );
 }
 /**
+ * Function to create interest rate default value settings input.
+ */
+function lidd_mc_settings_interest_rate_value() {
+	lidd_mc_settings_text_input( 'interest_rate_value' );
+	echo " %";
+}
+/**
  * Function to create fixed payment period settings input.
  */
 function lidd_mc_settings_fixed_payment_period() {
@@ -337,10 +346,30 @@ function lidd_mc_settings_submit_class() {
 // Validation
 
 /**
- * Generic function for validating labels and classes.
+ * Generic function for validating classes.
  */
 function lidd_mc_clean_text( $text ) {
 	return preg_replace( '/[^a-z0-9 _-]/i', '', $text );
+}
+
+/**
+ * Generic function for validating labels.
+ */
+function lidd_mc_clean_label( $text ) {
+	return sanitize_text_field( $text );
+}
+
+/**
+ * Generic function for validating number.
+ */
+function lidd_mc_clean_number( $number ) {
+	$number = preg_replace( '/[^0-9.]/', '', $number ); // Remove everything that isn't a digit or decimal
+	if ( substr_count( $number, '.' ) > 1 ) { // Remove extra decimals
+		$int = strstr( $number, '.', true );
+		$decimal = str_replace( '.', '', strstr( $number, '.' ) );
+		$number = $int . '.' . $decimal;
+	}
+	return number_format( $number, 2, '.', '' );
 }
 
 /**
@@ -397,6 +426,13 @@ function lidd_mc_validate_options( $input ) {
 	
 	// Down payment field
 	$valid['down_payment_visible'] = ( isset( $input['down_payment_visible'] ) ) ? 1 : 0;
+	
+	// Interest rate field
+	if ( !empty( $input['interest_rate_value'] ) ) {
+		$valid['interest_rate_value'] = lidd_mc_clean_number( $input['interest_rate_value'] );
+	} else {
+		$valid['interest_rate_value'] = null;
+	}
 	
 	// Fixed payment period
 	if ( isset( $input['payment_period'] ) ) {
@@ -470,7 +506,7 @@ function lidd_mc_validate_options( $input ) {
 	
 	// Clean the labels and register errors
 	foreach ( $names as $name ) {
-		$valid[$name . '_label'] = lidd_mc_clean_text( $input[$name . '_label'] );
+		$valid[$name . '_label'] = lidd_mc_clean_label( $input[$name . '_label'] );
 		$valid[$name . '_class'] = lidd_mc_clean_text( $input[$name . '_class'] );
 		if ( $valid[$name . '_label'] != $input[$name . '_label'] ) lidd_mc_settings_error( $name . '_label', 'label' );
 		if ( $valid[$name . '_class'] != $input[$name . '_class'] ) lidd_mc_settings_error( $name . '_class', 'class' );

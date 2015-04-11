@@ -4,7 +4,7 @@ Donate link: http://liddweaver.com/donate/
 Tags: mortgage, mortgage calculator, loan, realty, realtor, real estate, widget, responsive, jquery
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 2.1.3
+Stable tag: 2.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,7 +28,7 @@ The payment result is displayed below the form - very simply and very easy to fo
 
 __Redesign It__
 
-There are settings to adjust the styling, a light and a dark theme, or you can remove the styling entirely and use your themes styling. The HTML is built with plenty of classes, so it’s easy to override the included stylesheet with your own CSS. 
+There are settings to adjust the styling, a light and a dark theme, or you can remove the styling entirely and use your theme’s styling. The HTML is built with plenty of classes, so it’s easy to override the included stylesheet with your own CSS. 
 
 __Plenty of Options__
 
@@ -139,3 +139,8 @@ You can insert the mortgage calculator into a page or post using the short code 
 = 2.1.3 =
 
 * Script/style loading moved to ‘wp’ action and combined
+
+= 2.1.4 =
+
+* Added an option to set a default interest rate
+* Accented characters can now be used for field labels
