@@ -16,12 +16,12 @@ The Responsive Mortgage Calculator is a jQuery widget and shortcode that's desig
 
 __Features__
 
-The calculator allows your website visitors to estimate their mortgage entering:
+The calculator allows your website visitors to estimate their mortgage payments by entering:
 
-* the total cost of the of the home,
+* the total cost of the home,
 * a down payment amount,
 * an interested rate (fixed rate),
-* the amortization period
+* the amortization period,
 * and they can select a payment period, either monthly, bi-weekly, or weekly.
 
 The payment result is displayed below the form - very simply and very easy to follow. For the savvy user, a click on the information icon reveals more details…
