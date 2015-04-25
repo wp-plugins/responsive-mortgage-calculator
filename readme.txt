@@ -4,7 +4,7 @@ Donate link: http://liddweaver.com/donate/
 Tags: mortgage, mortgage calculator, loan, realty, realtor, real estate, widget, responsive, jquery
 Requires at least: 3.0.1
 Tested up to: 4.1
-Stable tag: 2.1.4
+Stable tag: 2.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,7 @@ __Plenty of Options__
 * Set the interest rate compounding period for your region.
 * Set your currency symbol and currency code.
 * Hide the down payment field.
+* Set a default interest rate.
 * Set a fixed payment period.
 * Rename the input labels.
 * Add your own CSS classes.
@@ -52,6 +53,10 @@ or use the first letter of the original labels:
 __Known Issues__
 
 The widget and short code rely on the same jQuery script at the moment. The short code seems to take precedence over the widget, meaning the widget won’t function on the same page as the shortcode.
+
+__Localization__
+
+The plugin is ready for translation. If your language isn’t included, contact me to contribute. Plays nicely with WPML.
 
 = DISCLAIMER =
 
@@ -144,3 +149,7 @@ You can insert the mortgage calculator into a page or post using the short code 
 
 * Added an option to set a default interest rate
 * Accented characters can now be used for field labels
+
+= 2.1.5 =
+
+* Changed script loading so that JS and CSS are always registered. JS and CSS can now be enqueued from your own scripts by calling wp_enqueue_script(‘lidd_mc’) and wp_enqueue_style(‘lidd_mc’)… in case you need to manually load them.
