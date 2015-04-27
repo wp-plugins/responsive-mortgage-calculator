@@ -50,6 +50,11 @@ jQuery(document).ready(function() {
 		var ir_error = jQuery('#lidd_mc_interest_rate-error');
 		var am_error = jQuery('#lidd_mc_amortization_period-error');
 		
+        
+        // Strip non-numeric characters from the total and down payment
+        ta = ta.replace(/[^\d.]/g, '');
+        dp = dp.replace(/[^\d.]/g, '');
+        
 		// Make sure the results divs are in their default states.
 		detailsDiv.hide();
 		resultDiv.html( '' );
@@ -79,7 +84,7 @@ jQuery(document).ready(function() {
 			triggerError( ta_error, lidd_mc_script_vars.ta_error );
 		}
 		// Down payment. If it is set, it must be less than the total amount.
-		if ( +dp == 0 || ( jQuery.isNumeric( +dp ) && +dp < ta ) ) {
+		if ( +dp == 0 || ( jQuery.isNumeric( +dp ) && +dp < +ta ) ) {
 			dp = Math.abs( Math.round( (+dp)*100 ) / 100 );
 			removeError( dp_error );
 		} else {

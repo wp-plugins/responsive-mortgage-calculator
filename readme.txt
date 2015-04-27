@@ -3,8 +3,8 @@ Contributors: liddweaver
 Donate link: http://liddweaver.com/donate/
 Tags: mortgage, mortgage calculator, loan, realty, realtor, real estate, widget, responsive, jquery
 Requires at least: 3.0.1
-Tested up to: 4.1
-Stable tag: 2.1.5
+Tested up to: 4.2
+Stable tag: 2.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,3 +153,7 @@ You can insert the mortgage calculator into a page or post using the short code 
 = 2.1.5 =
 
 * Changed script loading so that JS and CSS are always registered. JS and CSS can now be enqueued from your own scripts by calling wp_enqueue_script(‘lidd_mc’) and wp_enqueue_style(‘lidd_mc’)… in case you need to manually load them.
+
+= 2.1.6 =
+
+* Total Amount and Down Payment fields now accept commas and correct for poorly formatted input
