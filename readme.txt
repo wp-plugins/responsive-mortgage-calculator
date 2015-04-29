@@ -85,7 +85,7 @@ You can insert the mortgage calculator into a page or post using the short code 
 
 The calculator has a default compounding period that is semi-annual. Visit the settings page under `Settings` > `Resp Mortgage Calculator` and change the setting ‘Compounding period for the mortgage interest’ to the correct period for your region.
 
-== FAQ ==
+== Frequently Asked Questions ==
 
 = On submission, the page just reloads and the calculator shows no results =
 
