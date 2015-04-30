@@ -20,7 +20,7 @@ The calculator allows your website visitors to estimate their mortgage payments 
 
 * the total cost of the home,
 * a down payment amount,
-* an interested rate (fixed rate),
+* an interest rate (fixed rate),
 * the amortization period,
 * and they can select a payment period, either monthly, bi-weekly, or weekly.
 
@@ -50,13 +50,13 @@ or use the first letter of the original labels:
 
 `[rmc ta=“Mortgage Amount]`
 
-__Known Issues__
-
-The widget and short code rely on the same jQuery script at the moment. The short code seems to take precedence over the widget, meaning the widget won’t function on the same page as the shortcode.
-
 __Localization__
 
 The plugin is ready for translation. If your language isn’t included, contact me to contribute. Plays nicely with WPML.
+
+__Known Issues__
+
+The widget and short code rely on the same jQuery script at the moment. The short code seems to take precedence over the widget, meaning the widget won’t function on the same page as the shortcode.
 
 = DISCLAIMER =
 
@@ -91,7 +91,7 @@ The calculator has a default compounding period that is semi-annual. Visit the s
 
 This is likely a problem with the JavaScript file not being loaded, and seems to occur when using the shortcode with a visual editor plugin, like Visual Composer. This will also prevent the CSS file from loading.
 
-Solve this problem by manually loading the scripts and styles. In the plugin folder, open the `Extras` folder, then open the file called `manually_load_scripts.php`. Copy the contents to your theme’s functions.php file. Even better, copy it to the functions.php file of a child theme. Change the page slug in the if conditional from `your-page-slug-here` to the actual page slug you’re using for the shortcode. Test it.
+Solve this problem by manually loading the scripts and styles. In the plugin folder, open the `Extras` folder, then open the file called `manually_load_scripts.php`. Copy the contents to your theme’s functions.php file. Even better, copy it to the functions.php file of a child theme. Change the page slug in the `if` conditional from `your-page-slug-here` to the actual page slug you’re using for the shortcode. Test it.
 
 = The calculated payment is off by a few dollars =
 
@@ -99,7 +99,7 @@ The calculator calculates interest semi-annually by default, but you can change 
 
 == Screenshots ==
 
-1. The mortgage calculator fits in the widgets area of your theme and blends right in. The form inputs are styled simply and unobtrusively. The ‘Calculate’ button takes it’s styling from your theme.
+1. The mortgage calculator fits in the widgets area of your theme or on any page and blends right in. The form inputs are styled simply and unobtrusively. The ‘Calculate’ button takes it’s styling from your theme.
 2. The mortgage payment amount is displayed below the ‘Calculate’ button. The circled ‘i’ - the ‘inspector’ icon for Mac fans - is clickable.
 3. A longer summary of the mortgage details is displayed when the ‘inspector’ icon is clicked.
 
