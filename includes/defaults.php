@@ -28,5 +28,6 @@ return array(
 	'currency' => '$',
 	'currency_code' => null,
 	'summary' => 1,
-	'interest_rate_value' => null
+	'interest_rate_value' => null,
+    'payment_period' => 0
 );
