@@ -48,7 +48,7 @@ class LiddMCDetails
 		
 		$details = '
 			<div id="lidd_mc_details" style="display: none;">
-				<div id="lidd_mc_results"></div>
+				<div id="lidd_mc_results" class="lidd_mc_results"></div>
 				';
 				
 		// Include the inspector if the summary is set to toggle

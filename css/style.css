@@ -154,7 +154,7 @@
 	color: #900;
 }
 
-#lidd_mc_details {
+.lidd_mc_details {
 	position: relative;
 	margin-top: 2em;
 }
@@ -184,7 +184,6 @@
 	background: #000;
 	border: 1px solid #333;
 }
-
 
 .lidd_mc_b {
 	font-weight: bold;
