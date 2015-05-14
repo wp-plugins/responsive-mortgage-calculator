@@ -185,16 +185,6 @@
 	border: 1px solid #333;
 }
 
-#lidd_mc_summary {
-	box-sizing: border-box;
-	width: 100%;
-	height: auto;
-	padding: 1em 1em 0 1em;
-	margin: 0 0 1em 0;
-	color: #333;
-	background: #fff;
-	border: 1px solid #ddd;
-}
 
 .lidd_mc_b {
 	font-weight: bold;
