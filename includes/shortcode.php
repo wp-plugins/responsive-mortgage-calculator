@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') or die("...");
+
 /**
  * This file adds the shortcode functionality
  *

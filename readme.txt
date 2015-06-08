@@ -4,7 +4,7 @@ Donate link: http://liddweaver.com/donate/
 Tags: mortgage, mortgage calculator, loan, realty, realtor, real estate, widget, responsive, jquery
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.1.6
+Stable tag: 2.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,6 +104,11 @@ The calculator calculates interest semi-annually by default, but you can change 
 3. A longer summary of the mortgage details is displayed when the ‘inspector’ icon is clicked.
 
 == Changelog ==
+
+= 2.1.7 =
+
+* Security update: added security check to all necessary PHP files to prevent unwanted access to support files
+* Corrected a class that prevented the ‘i’ icon from being correctly positioned
 
 = 2.1.6 =
 

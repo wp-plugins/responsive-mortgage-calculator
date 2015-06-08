@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') or die("...");
+
 /**
  * An class to instantiate and return input objects to the form class.
  *

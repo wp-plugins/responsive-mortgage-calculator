@@ -1,10 +1,14 @@
 <?php
+
+defined('ABSPATH') or die("...");
+
 /**
  * This is a function to build the form.
  *
  * @package Lidd's Mortgage Calculator
  * @since 2.1.0
  */
+
 
 /**
  * Create a function to create the calculator form.

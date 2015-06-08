@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') or die("...");
+
 /**
  * This is a function to validate shortcode attributes and resolve them with the plugin options.
  *

@@ -1,4 +1,8 @@
 <?php
+// -- This is here for security. Don't copy it into your other files.
+defined('ABSPATH') or die("...");
+// --
+
 /*
  * The JS and CSS may not load when using the shortcode inside a visual editor, like Visual Composer.
  * Include this script in your theme's functions.php file to manually load the JS and CSS.

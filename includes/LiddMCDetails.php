@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') or die("...");
+
 /**
  * A class to define the mortgage calculator details section.
  *
@@ -47,7 +50,7 @@ class LiddMCDetails
 	public function getDetails() {
 		
 		$details = '
-			<div id="lidd_mc_details" style="display: none;">
+			<div id="lidd_mc_details" class="lidd_mc_details" style="display: none;">
 				<div id="lidd_mc_results" class="lidd_mc_results"></div>
 				';
 				
