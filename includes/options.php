@@ -186,7 +186,8 @@ function lidd_mc_settings_currency() {
 		'$' => '$ - ' . __( 'Dollar', 'responsive-mortgage-calculator' ),
 		'€' => '€ - ' . __( 'Euro', 'responsive-mortgage-calculator' ),
 		'£' => '£ - ' . __( 'Pound', 'responsive-mortgage-calculator' ),
-		'¥' => '¥ - ' . __( 'Yen', 'responsive-mortgage-calculator' ),
+		'¥' => '¥ - ' . __( 'Yen / Yuan', 'responsive-mortgage-calculator' ),
+		'₱' => '₱ - ' . __( 'Peso', 'responsive-mortgage-calculator' ),
 		'¤' => '¤ - ' . __( 'Generic', 'responsive-mortgage-calculator' )
 	);
 	lidd_mc_settings_selectbox( 'currency', $options );
@@ -408,6 +409,9 @@ function lidd_mc_validate_options( $input ) {
 			case '¥':
 				$valid['currency'] = '¥';
 				break;
+            case '₱':
+                $valid['currency'] = '₱';
+                break;
 			case '¤':
 				$valid['currency'] = '¤';
 				break;

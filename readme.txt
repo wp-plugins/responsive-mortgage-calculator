@@ -105,6 +105,10 @@ The calculator calculates interest semi-annually by default, but you can change 
 
 == Changelog ==
 
+= 2.1.8 =
+
+* Added Peso currency symbol
+
 = 2.1.7 =
 
 * Security update: added security check to all necessary PHP files to prevent unwanted access to support files

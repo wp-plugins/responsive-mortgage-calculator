@@ -147,6 +147,9 @@ jQuery(document).ready(function() {
 			case '¥': // Yen
 				currency = '¥';
 				break;
+            case '₱': // Peso
+                currency = '₱';
+                break;
 			case '¤': // Generic
 				currency = '¤';
 				break;
