@@ -107,6 +107,10 @@ The calculator calculates interest semi-annually by default, but you can change 
 
 == Changelog ==
 
+= 2.1.91 =
+
+* Updated JavaScript version number to override caching of old JS file
+
 = 2.1.9 =
 
 * This update requires resaving the options or reinstalling to initialize the new currency format and new result settings (see changes below)
