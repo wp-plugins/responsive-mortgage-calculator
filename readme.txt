@@ -91,7 +91,7 @@ The calculator has a default compounding period that is semi-annual. Visit the s
 
 This is likely a problem with the JavaScript file not being loaded, and seems to occur when using the shortcode with a visual editor plugin, like Visual Composer. This will also prevent the CSS file from loading.
 
-First, try switching from the visual editor to plain text editing. Add the shortcode in plain text and save it. Check the mortgage calculator to see if it working. If that didn’t work, you can…
+First, try editing the page with the shortcode. Switch from the visual editor to plain text editing, add the shortcode in plain text, and save it. Check the mortgage calculator to see if it working. If that didn’t work, you can…
 
 Solve this problem by manually loading the scripts and styles. In the plugin folder, open the `Extras` folder, then open the file called `manually_load_scripts.php`. Copy the contents to your theme’s functions.php file. Even better, copy it to the functions.php file of a child theme. Change the page slug in the `if` conditional from `your-page-slug-here` to the actual page slug you’re using for the shortcode. Test it.
 
