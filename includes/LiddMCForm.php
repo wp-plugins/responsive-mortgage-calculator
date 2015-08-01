@@ -99,18 +99,6 @@ class LiddMCForm
 					52 => __( 'Weekly', 'responsive-mortgage-calculator' )
 				) );
 		}
-
-		// Number of compounding periods
-		$cp = $factory->newInput( 'hidden', 'lidd_mc_compounding_period' );
-		$cp->setValue( $options['compounding_period'] );
-
-		// Currency
-		$cur = $factory->newInput( 'hidden', 'lidd_mc_currency' );
-		$cur->setValue( $options['currency'] );
-		
-		// Currency Code
-		$cc = $factory->newInput( 'hidden', 'lidd_mc_currency_code' );
-		$cc->setValue( $options['currency_code'] );
 	
 		// Submit button
 		$sub = $factory->newInput( 'submit', 'lidd_mc_submit' );
@@ -125,9 +113,6 @@ class LiddMCForm
 		$form .= $ir->getInput();
 		$form .= $ap->getInput();
 		$form .= $pp->getInput();
-		$form .= $cp->getInput();
-		$form .= $cur->getInput();
-		$form .= $cc->getInput();
 		$form .= $sub->getInput();
 		
 		$form .= '</form>';

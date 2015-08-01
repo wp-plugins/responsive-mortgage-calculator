@@ -27,7 +27,10 @@ return array(
 	'compounding_period' => 2,
 	'currency' => '$',
 	'currency_code' => null,
+	'currency_format' => '{currency}{amount} {code}',
 	'summary' => 1,
+	'summary_interest' => 1,
+	'summary_downpayment' => 1,
 	'interest_rate_value' => null,
     'payment_period' => 0
 );

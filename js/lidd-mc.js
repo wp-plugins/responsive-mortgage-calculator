@@ -21,12 +21,9 @@ jQuery(document).ready(function() {
 		}
 		
 		// Function to format internationalized currencies
-		function formatCurrency( format, symbol, amount, code ) {
-			var formatted = format;
-			formatted = formatted.replace( "{symbol}", symbol );
-			formatted = formatted.replace( "{amount}", amount );
-			formatted = formatted.replace( "{code}", code );
-			return formatted;
+		function formatCurrency( amount ) {
+			var formatted = currency_format;
+			return formatted.replace( "{amount}", amount );
 		}
 		
 		// Initialize variables.
@@ -40,10 +37,15 @@ jQuery(document).ready(function() {
 		var ir = jQuery('#lidd_mc_interest_rate').val();
 		var am = jQuery('#lidd_mc_amortization_period').val();
 		var pp = jQuery('#lidd_mc_payment_period option:selected' ).val();
-		var cp = jQuery('#lidd_mc_compounding_period' ).val();
-		var currency = jQuery('#lidd_mc_currency' ).val();
-		var currency_code = jQuery('#lidd_mc_currency_code' ).val();
-		
+		var cp = lidd_mc_script_vars.compounding_period;
+        
+        // Currency format
+		var currency = lidd_mc_script_vars.currency;
+		var currency_code = validateCurrencyCode( lidd_mc_script_vars.currency_code );
+		var currency_format = lidd_mc_script_vars.currency_format;
+		currency_format = currency_format.replace( '{currency}', currency );
+		currency_format = currency_format.replace( '{code}', currency_code );
+        
 		// Get the error reporting spans.
 		var ta_error = jQuery('#lidd_mc_total_amount-error');
 		var dp_error = jQuery('#lidd_mc_down_payment-error');
@@ -136,34 +138,6 @@ jQuery(document).ready(function() {
 				cp = 12;
 				break;
 		}
-		// Currency
-		switch( currency ) {
-		case '€': // Euro
-				currency = '€';
-				break;
-			case '£': // Pound
-				curency = '£';
-				break;
-			case '¥': // Yen
-				currency = '¥';
-				break;
-            case '₱': // Peso
-                currency = '₱';
-                break;
-			case '¤': // Generic
-				currency = '¤';
-				break;
-			case '$': // Dollar
-			default:
-				currency = '$';
-				break;
-		}
-		// Currency Code
-		if ( currency_code ) {
-			currency_code = validateCurrencyCode( currency_code );
-		} else {
-			currency_code = '';
-		}
 		
 		// ***** END VALIDATION ***** //
 		// ************************** //
@@ -192,57 +166,6 @@ jQuery(document).ready(function() {
 			// Set the result for output.
 			var result = numberWithCommas(parseFloat( Math.round( payment * 100 ) / 100 ).toFixed(2));
 			
-			// Summarize the data.
-			var display_total = numberWithCommas(parseInt(ta - dp).toFixed(2));
-			if ( ( am - Math.floor(am) > 0 ) ) {
-				var remainder = (np > pp) ? np % pp : pp % np;
-				if ( pp == 12 ) {
-					if ( remainder > 1 ) {
-						var summary = lidd_mc_script_vars.sym_text;
-						summary = summary.replace( "{amortization_months}", remainder );
-					} else {
-						var summary = lidd_mc_script_vars.sym1_text;
-					}
-				} else if ( pp == 52 ) {
-					if ( remainder > 1 ) {
-						var summary = lidd_mc_script_vars.syw_text;
-						summary = summary.replace( "{amortization_weeks}", remainder );
-					} else {
-						var summary = lidd_mc_script_vars.syw1_text;
-					}
-				} else {
-					var summary = lidd_mc_script_vars.syw_text;
-					summary = summary.replace( "{amortization_weeks}", remainder * 2 );
-				}
-			} else {
-				var summary = lidd_mc_script_vars.sy_text;
-			}
-			summary = summary.replace( "{currency}", currency );
-			summary = summary.replace( "{total_amount}", display_total );
-			summary = summary.replace( "{amortization_years}", Math.floor(am) );
-			summary = summary.replace( "{payment_period}", period );
-			summary = '<p>' + summary + ':</p>';
-			
-			// Mortgage payment
-			summary += '<p>' + lidd_mc_script_vars.mp_text + ': <b class="lidd_mc_b">' + formatCurrency( lidd_mc_script_vars.currency_format, currency, result, currency_code ) + '</b></p>';
-			
-			// Total mortgage with interest
-			summary += '<p>' + lidd_mc_script_vars.tmwi_text + ': <b class="lidd_mc_b">' + formatCurrency(
-				lidd_mc_script_vars.currency_format,
-				currency,
-				numberWithCommas(parseFloat( Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) ),
-				currency_code
-			) + '</b></p>';
-			
-			// Total with down payment
-			if ( dp > 0 ) {
-				summary += '<p>' + lidd_mc_script_vars.twdp_text + ': <b class="lidd_mc_b">' + formatCurrency(
-					lidd_mc_script_vars.currency_format,
-					currency,
-					numberWithCommas(parseFloat( dp + Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) ),
-					currency_code
-				) + '</b></p>';
-			}
 			
 			// Payment amount
 			var display_result;
@@ -258,34 +181,85 @@ jQuery(document).ready(function() {
 					display_result = lidd_mc_script_vars.monthly_payment;
 					break;
 			}
-			display_result = display_result + ': ' + formatCurrency(
-				lidd_mc_script_vars.currency_format,
-				currency,
-				result,
-				currency_code
-			);
+			display_result = display_result + ': ' + formatCurrency( result );
 			
-			// Print to the messaging areas.
+            // Print the result.
 			resultDiv.html( '<p>' + display_result + '</p>' );
-			summaryDiv.html( summary );
-
-			// Show the details div.
-			detailsDiv.show();
+            
+			// Summarize the data.
+            if ( lidd_mc_script_vars.summary == 1 || lidd_mc_script_vars.summary == 2 ) {
+    			var display_total = numberWithCommas(parseInt(ta - dp).toFixed(2));
+    			if ( ( am - Math.floor(am) > 0 ) ) {
+    				var remainder = (np > pp) ? np % pp : pp % np;
+    				if ( pp == 12 ) {
+    					if ( remainder > 1 ) {
+    						var summary = lidd_mc_script_vars.sym_text;
+    						summary = summary.replace( "{amortization_months}", remainder );
+    					} else {
+    						var summary = lidd_mc_script_vars.sym1_text;
+    					}
+    				} else if ( pp == 52 ) {
+    					if ( remainder > 1 ) {
+    						var summary = lidd_mc_script_vars.syw_text;
+    						summary = summary.replace( "{amortization_weeks}", remainder );
+    					} else {
+    						var summary = lidd_mc_script_vars.syw1_text;
+    					}
+    				} else {
+    					var summary = lidd_mc_script_vars.syw_text;
+    					summary = summary.replace( "{amortization_weeks}", remainder * 2 );
+    				}
+    			} else {
+    				var summary = lidd_mc_script_vars.sy_text;
+    			}
+    			summary = summary.replace( "{total_amount}", formatCurrency( display_total ) );
+    			summary = summary.replace( "{amortization_years}", Math.floor(am) );
+    			summary = summary.replace( "{payment_period}", period );
+    			summary = '<p>' + summary + ':</p>';
 			
-			// Show the summary div when the result div is clicked.
-			if ( document.getElementById( 'lidd_mc_inspector' ) != null ) {
+            
+    			// Mortgage payment
+    			summary += '<p>' + lidd_mc_script_vars.mp_text + ': <b class="lidd_mc_b">' + formatCurrency( result ) + '</b></p>';
+			
+    			// Total mortgage with interest
+                if ( lidd_mc_script_vars.summary_interest == 1 ) {
+        			summary += '<p>' + lidd_mc_script_vars.tmwi_text + ': <b class="lidd_mc_b">' + formatCurrency(
+        				numberWithCommas(parseFloat( Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) )
+        			) + '</b></p>';
+                }
+			
+    			// Total with down payment
+                if ( lidd_mc_script_vars.summary_downpayment == 1 ) {
+        			if ( dp > 0 ) {
+        				summary += '<p>' + lidd_mc_script_vars.twdp_text + ': <b class="lidd_mc_b">' + formatCurrency(
+        					numberWithCommas(parseFloat( dp + Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) )
+        				) + '</b></p>';
+        			}
+                }
+                
+    			// Add the summary to the page
+    			summaryDiv.html( summary );
 
-				jQuery('#lidd_mc_inspector').click(function() {
-					if ( showSummary === false ) {
-						summaryDiv.show();
-						showSummary = true;
-					} else {
-						summaryDiv.hide();
-						showSummary = false;
-					}
-				});
+			
+    			// Show the summary div when the result div is clicked.
+    			if ( document.getElementById( 'lidd_mc_inspector' ) != null ) {
+
+    				jQuery('#lidd_mc_inspector').click(function() {
+    					if ( showSummary === false ) {
+    						summaryDiv.show();
+    						showSummary = true;
+    					} else {
+    						summaryDiv.hide();
+    						showSummary = false;
+    					}
+    				});
 				
-			}
+    			}
+                
+            }
+
+			// Show the details div for results and summary
+			detailsDiv.show();
 			
 		}
 		

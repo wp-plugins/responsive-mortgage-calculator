@@ -45,6 +45,8 @@ function lidd_mc_admin_init() {
 	add_settings_field( 'lidd_mc_currency', __( 'Currency symbol', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_currency', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Currency code
 	add_settings_field( 'lidd_mc_currency_code', __( 'Currency code', 'responsive-mortgage-calculator' ) . ' &ndash; <a href="http://www.currency-iso.org/">ISO 4217</a>', 'lidd_mc_settings_currency_code', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	// Currency format
+	add_settings_field( 'lidd_mc_currency_format', __( 'Currency format', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_currency_format', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Include Down Payment field
 	add_settings_field( 'lidd_mc_down_payment_visible', __( 'Include the down payment field', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_down_payment_visible', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Set a default interest rate
@@ -69,6 +71,10 @@ function lidd_mc_admin_init() {
 	add_settings_section( 'lidd_mc_results', __( 'Results', 'responsive-mortgage-calculator' ), 'lidd_mc_options_results_text', LIDD_MC_OPTIONS );
 	// Additional information panel (0 = hide, 1 = toggle, 2 = always show)
 	add_settings_field( 'lidd_mc_summary', __( 'Set the result summary visibility', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_summary', LIDD_MC_OPTIONS, 'lidd_mc_results' );
+	// Show the total with interest (0 = hide, 1 = show)
+	add_settings_field( 'lidd_mc_summary_interest', __( 'Show the total amount with interest in the results', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_summary_interest', LIDD_MC_OPTIONS, 'lidd_mc_results' );
+	// Show the total with down payment (0 = hide, 1 = show)
+	add_settings_field( 'lidd_mc_summary_downpayment', __( 'Include the total amount with down payment in the results', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_summary_downpayment', LIDD_MC_OPTIONS, 'lidd_mc_results' );
 
 	// --------------------------------------------
 	// Labels
@@ -182,21 +188,20 @@ function lidd_mc_settings_compounding_period() {
  * Function to create currency settings input.
  */
 function lidd_mc_settings_currency() {
-	$options = array(
-		'$' => '$ - ' . __( 'Dollar', 'responsive-mortgage-calculator' ),
-		'€' => '€ - ' . __( 'Euro', 'responsive-mortgage-calculator' ),
-		'£' => '£ - ' . __( 'Pound', 'responsive-mortgage-calculator' ),
-		'¥' => '¥ - ' . __( 'Yen / Yuan', 'responsive-mortgage-calculator' ),
-		'₱' => '₱ - ' . __( 'Peso', 'responsive-mortgage-calculator' ),
-		'¤' => '¤ - ' . __( 'Generic', 'responsive-mortgage-calculator' )
-	);
-	lidd_mc_settings_selectbox( 'currency', $options );
+	lidd_mc_settings_text_input( 'currency' );
 }
 /**
  * Function to create currency code settings input.
  */
 function lidd_mc_settings_currency_code() {
 	lidd_mc_settings_text_input( 'currency_code' );
+}
+/**
+ * Function to create currency code settings input.
+ */
+function lidd_mc_settings_currency_format() {
+	lidd_mc_settings_text_input( 'currency_format' );
+    echo ' <p class="description">Use the tags {currency}, {amount} and {code} to structure how currency is displayed in the results. Spaces are allowed.</p>';
 }
 /**
  * Function to create down payment visibility settings input.
@@ -271,6 +276,18 @@ function lidd_mc_settings_summary() {
 	);
 	lidd_mc_settings_selectbox( 'summary', $options );
 	
+}
+/**
+ * Function to create result summary interest settings input.
+ */
+function lidd_mc_settings_summary_interest() {
+	lidd_mc_settings_checkbox( 'summary_interest' );
+}
+/**
+ * Function to create result summary down payment settings input.
+ */
+function lidd_mc_settings_summary_downpayment() {
+	lidd_mc_settings_checkbox( 'summary_downpayment' );
 }
 /**
  * Function to create total amount label settings input.
@@ -399,28 +416,9 @@ function lidd_mc_validate_options( $input ) {
 	
 	// Currency
 	if ( isset( $input['currency'] ) ) {
-		switch ( $input['currency'] ) {
-			case '£':
-				$valid['currency'] = '£';
-				break;
-			case '€':
-				$valid['currency'] = '€';
-				break;
-			case '¥':
-				$valid['currency'] = '¥';
-				break;
-            case '₱':
-                $valid['currency'] = '₱';
-                break;
-			case '¤':
-				$valid['currency'] = '¤';
-				break;
-			default:
-				$valid['currency'] = '$';
-				break;
-		}
+        $valid['currency'] = sanitize_text_field( $input['currency'] );
 	} else {
-		$valid['currency'] = '$';
+		$valid['currency'] = null;
 	}
 	
 	// Currency code
@@ -430,6 +428,21 @@ function lidd_mc_validate_options( $input ) {
 	} else {
 		$valid['currency_code'] = null;
 	}
+    
+    // Currency format
+    if ( isset( $input['currency_format'] ) ) {
+        $regex = '![^(\{currency\})|(\{amount\})|(\{code\})| ]!';
+        $valid['currency_format'] = strtolower( trim( $input['currency_format'] ) );
+        $valid['currency_format'] = preg_replace( $regex, '', $valid['currency_format'] );
+        if ( $valid['currency_format'] == '' ) {
+            $valid['currency_format'] = '{currency}{amount} {code}';
+        }
+        else if ( substr_count( $valid['currency_format'], '{amount}' ) == 0 ) {
+            $valid['currency_format'] .= '{amount}';
+        }
+    } else {
+        $valid['currency_format'] = '{currency}{amount} {code}';
+    }
 	
 	// Down payment field
 	$valid['down_payment_visible'] = ( isset( $input['down_payment_visible'] ) ) ? 1 : 0;
@@ -500,6 +513,8 @@ function lidd_mc_validate_options( $input ) {
 	} else {
 		$valid['summary'] = 1;
 	}
+	$valid['summary_interest'] = ( isset( $input['summary_interest'] ) ) ? 1 : 0;
+	$valid['summary_downpayment'] = ( isset( $input['summary_downpayment'] ) ) ? 1 : 0;
 	
 	// Define an array of label and class names
 	$names = array(

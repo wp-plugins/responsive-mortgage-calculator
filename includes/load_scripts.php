@@ -45,7 +45,9 @@ add_action( 'wp_enqueue_scripts', 'lidd_mc_are_scripts_required' );
 
 // Localize JavaScript
 function lidd_mc_localize_script() {
-	
+
+	$options = get_option( LIDD_MC_OPTIONS );
+    
 	// HTML wrapper on return values 
 	$bs = '<b class="lidd_mc_b">';
 	$be = '</b>';
@@ -61,46 +63,42 @@ function lidd_mc_localize_script() {
 			'weekly_payment' => __( 'Weekly Payment', 'responsive-mortgage-calculator' ),
 			'biweekly_payment' => __( 'Bi-Weekly Payment', 'responsive-mortgage-calculator' ),
 			'monthly_payment' => __( 'Monthly Payment', 'responsive-mortgage-calculator' ),
-			'currency_format' => $bs . sprintf(
-				_x( '%1$s%2$s %3$s', 'Currency format, eg. $2.00 USD', 'responsive-mortgage-calculator' ),
-				'{symbol}',
-				'{amount}',
-				'{code}'
-			) . $be,
+            'currency' => $options['currency'],
+            'currency_code' => $options['currency_code'],
+			'currency_format' => $bs . $options['currency_format'] . $be,
+            'compounding_period' => $options['compounding_period'],
+            'summary' => $options['summary'],
+            'summary_interest' => $options['summary_interest'],
+            'summary_downpayment' => $options['summary_downpayment'],
 			'sy_text' => sprintf( // Summary with number of years
-				__( 'For a mortgage of %1$s%2$s amortized over %3$s years, your %4$s payment is', 'responsive-mortgage-calculator' ),
-				$bs . '{currency}' . $be,
+				__( 'For a mortgage of %1$s amortized over %2$s years, your %3$s payment is', 'responsive-mortgage-calculator' ),
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
 				$bs . '{payment_period}' . $be
 			),
 			'sym1_text' => sprintf( // Summary with years and months
-				__( 'For a mortgage of %1$s%2$s amortized over %3$s years and %4$s month, your %5$s payment is', 'responsive-mortgage-calculator' ),
-				$bs . '{currency}' . $be,
+				__( 'For a mortgage of %1$s amortized over %2$s years and %3$s month, your %4$s payment is', 'responsive-mortgage-calculator' ),
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
 				$bs . '1' . $be,
 				$bs . '{payment_period}' . $be
 			),
 			'sym_text' => sprintf( // Summary with years and months
-				__( 'For a mortgage of %1$s%2$s amortized over %3$s years and %4$s months, your %5$s payment is', 'responsive-mortgage-calculator' ),
-				$bs . '{currency}' . $be,
+				__( 'For a mortgage of %1$s amortized over %2$s years and %3$s months, your %4$s payment is', 'responsive-mortgage-calculator' ),
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
 				$bs . '{amortization_months}' . $be,
 				$bs . '{payment_period}' . $be
 			),
 			'syw1_text' => sprintf( // Summary with years and weeks
-				__( 'For a mortgage of %1$s%2$s amortized over %3$s years and %4$s week, your %5$s payment is', 'responsive-mortgage-calculator' ),
-				$bs . '{currency}' . $be,
+				__( 'For a mortgage of %1$s amortized over %2$s years and %3$s week, your %4$s payment is', 'responsive-mortgage-calculator' ),
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
 				$bs . '1' . $be,
 				$bs . '{payment_period}' . $be
 			),
 			'syw_text' => sprintf( // Summary with years and weeks
-				__( 'For a mortgage of %1$s%2$s amortized over %3$s years and %4$s weeks, your %5$s payment is', 'responsive-mortgage-calculator' ),
-				$bs . '{currency}' . $be,
+				__( 'For a mortgage of %1$s amortized over %2$s years and %3$s weeks, your %4$s payment is', 'responsive-mortgage-calculator' ),
 				$bs . '{total_amount}' . $be,
 				$bs . '{amortization_years}' . $be,
 				$bs . '{amortization_weeks}' . $be,
