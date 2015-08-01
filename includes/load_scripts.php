@@ -31,7 +31,7 @@ function lidd_mc_detect_shortcode() {
 function lidd_mc_are_scripts_required() {
     
     // Register JS
-    wp_register_script( 'lidd_mc', LIDD_MC_URL . 'js/lidd-mc.js', 'jquery', '2.1.6', true );
+    wp_register_script( 'lidd_mc', LIDD_MC_URL . 'js/lidd-mc.js', 'jquery', '2.1.9', true );
     lidd_mc_localize_script();
     
     // Register CSS
