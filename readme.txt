@@ -4,7 +4,7 @@ Donate link: http://liddweaver.com/donate/
 Tags: mortgage, mortgage calculator, loan, realty, realtor, real estate, widget, responsive, jquery
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.1.91
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,6 +107,12 @@ The calculator calculates interest semi-annually by default, but you can change 
 
 == Changelog ==
 
+= 2.2.0 =
+
+* This version marks completion of changes to currency formatting. If you skipped update 2.1.9/1, please read those updates.
+* Completed changes to the .pot, and FR and ES .po and .mo files to include changes to the way that currencies are now formatted and displayed. These changes impact the summary section only
+* Currency format has been removed from the translation files and placed into the database via the options page. (see 2.1.9 updates)
+
 = 2.1.91 =
 
 * Updated JavaScript version number to override caching of old JS file
@@ -115,8 +121,8 @@ The calculator calculates interest semi-annually by default, but you can change 
 
 * This update requires resaving the options or reinstalling to initialize the new currency format and new result settings (see changes below)
 * Currency is now entirely customizable (replaced the select box with a text input)
-* You can now arrange your currency results using the currency symbol, amount and ISO code
-* You can now choose to hide the total with interest and downpayment in the results summary
+* You can now arrange your currency results using the currency symbol, amount and ISO code. See the options page to create your currency format
+* You can now choose to hide the total with interest and downpayment in the results summary. See the options page
 * Moved settings required by Javascript from hidden inputs to localization object
 * Minor changes to localizations. New .pot, .po, .mo files pending. Please await changes to FR and ES language files if you are using them.
 
