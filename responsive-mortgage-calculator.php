@@ -43,7 +43,7 @@ add_action( 'plugins_loaded', 'lidd_mc_load_plugin_textdomain' );
 register_activation_hook( __FILE__, 'lidd_mc_install' );
 function lidd_mc_install() {
 	// Only add the options if they don't already exist.
-	if ( !get_option( LIDD_MC_OPTIONS ) ) {
+	if ( ! get_option( LIDD_MC_OPTIONS ) ) {
 		lidd_mc_load_plugin_textdomain(); // Load text domain
 		$defaults = include( 'includes/defaults.php' ); // Get defaults
 		update_option( LIDD_MC_OPTIONS, $defaults ); // Insert defaults into the options table

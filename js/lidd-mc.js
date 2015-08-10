@@ -10,10 +10,62 @@ jQuery(document).ready(function() {
 		// Prevent the form from being submitted.
 		event.preventDefault();
 		
-		// Formatting function for outputting numbers with commas.
-		function numberWithCommas(x) {
-		    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+		// Formatting function for outputting numbers with separator.
+		function numberWithSeparator(x, separator, decimals, decimal_separator) {
+            x = x.toFixed( decimals );
+		    x = x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+            if ( decimals > 0 && decimal_separator == ',' ) {
+                x = x.substring( 0, x.lastIndexOf(".") ) + ',' + x.substring( x.lastIndexOf(".") + 1 );
+            }
+            return x;
 		}
+        // Indian formatting
+        function indianSystem(x) {
+            x = x.toFixed(0);
+		    return x.slice(0, -3).toString().replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' + x.slice(-3);
+        }
+        
+        // Format numbers based on the given format
+        function formatNumber(x) {
+            switch (number_format) {
+            case '1':
+                return numberWithSeparator(x, ' ', 0, null);
+                break;
+            case '2':
+                return numberWithSeparator(x, ' ', 2, '.');
+                break;
+            case '3':
+                return numberWithSeparator(x, ' ', 3, '.');
+                break;
+            case '4':
+                return numberWithSeparator(x, ',', 0, null);
+                break;
+            case '5':
+                return indianSystem(x);
+                break;
+            case '6':
+                return numberWithSeparator(x, ',', 2, '.');
+                break;
+            case '7':
+                return numberWithSeparator(x, ',', 3, '.');
+                break;
+            case '8':
+                return numberWithSeparator(x, '.', 0, null);
+                break;
+            case '9':
+                return numberWithSeparator(x, '.', 2, ',');
+                break;
+            case '10':
+                return numberWithSeparator(x, '.', 3, ',');
+                break;
+            case '11':
+                return numberWithSeparator(x, '\'', 2, '.');
+                break;
+            default:
+                return numberWithSeparator(x, ',', 2, '.');
+                break;
+            }
+        }
 		
 		// Formatting function for currency codes
 		function validateCurrencyCode(code) {
@@ -43,6 +95,7 @@ jQuery(document).ready(function() {
 		var currency = lidd_mc_script_vars.currency;
 		var currency_code = validateCurrencyCode( lidd_mc_script_vars.currency_code );
 		var currency_format = lidd_mc_script_vars.currency_format;
+		var number_format = lidd_mc_script_vars.number_format;
 		currency_format = currency_format.replace( '{currency}', currency );
 		currency_format = currency_format.replace( '{code}', currency_code );
         
@@ -53,9 +106,10 @@ jQuery(document).ready(function() {
 		var am_error = jQuery('#lidd_mc_amortization_period-error');
 		
         
-        // Strip non-numeric characters from the total and down payment
+        // Strip non-numeric characters from the total, down payment, and interest rate
         ta = ta.replace(/[^\d.]/g, '');
         dp = dp.replace(/[^\d.]/g, '');
+        ir = ir.replace(/[^\d.]/g, '');
         
 		// Make sure the results divs are in their default states.
 		detailsDiv.hide();
@@ -164,7 +218,7 @@ jQuery(document).ready(function() {
 			var payment = loan * ( ( rPeriod * rFactor ) / ( rFactor - 1 ) );
 		
 			// Set the result for output.
-			var result = numberWithCommas(parseFloat( Math.round( payment * 100 ) / 100 ).toFixed(2));
+			var result = formatNumber( parseFloat( Math.round( payment * 100 ) / 100 ) );
 			
 			
 			// Payment amount
@@ -188,7 +242,7 @@ jQuery(document).ready(function() {
             
 			// Summarize the data.
             if ( lidd_mc_script_vars.summary == 1 || lidd_mc_script_vars.summary == 2 ) {
-    			var display_total = numberWithCommas(parseInt(ta - dp).toFixed(2));
+    			var display_total = formatNumber( parseInt(ta - dp) );
     			if ( ( am - Math.floor(am) > 0 ) ) {
     				var remainder = (np > pp) ? np % pp : pp % np;
     				if ( pp == 12 ) {
@@ -224,7 +278,7 @@ jQuery(document).ready(function() {
     			// Total mortgage with interest
                 if ( lidd_mc_script_vars.summary_interest == 1 ) {
         			summary += '<p>' + lidd_mc_script_vars.tmwi_text + ': <b class="lidd_mc_b">' + formatCurrency(
-        				numberWithCommas(parseFloat( Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) )
+        				formatNumber(parseFloat( Math.round( (payment * np) * 100 ) / 100 ) )
         			) + '</b></p>';
                 }
 			
@@ -232,7 +286,7 @@ jQuery(document).ready(function() {
                 if ( lidd_mc_script_vars.summary_downpayment == 1 ) {
         			if ( dp > 0 ) {
         				summary += '<p>' + lidd_mc_script_vars.twdp_text + ': <b class="lidd_mc_b">' + formatCurrency(
-        					numberWithCommas(parseFloat( dp + Math.round( (payment * np) * 100 ) / 100 ).toFixed(2) )
+        					formatNumber(parseFloat( +dp + Math.round( (payment * np) * 100 ) / 100 ) )
         				) + '</b></p>';
         			}
                 }

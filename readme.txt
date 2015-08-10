@@ -33,7 +33,7 @@ There are settings to adjust the styling, a light and a dark theme, or you can r
 __Plenty of Options__
 
 * Set the interest rate compounding period for your region.
-* Set your currency symbol and currency code.
+* Format currencies how you want with your own symbol, ISO code and number format.
 * Hide the down payment field.
 * Set a default interest rate.
 * Set a fixed payment period.
@@ -106,6 +106,12 @@ The calculator calculates interest semi-annually by default, but you can change 
 3. A longer summary of the mortgage details is displayed when the ‘inspector’ icon is clicked.
 
 == Changelog ==
+
+= 2.2.1 =
+
+* Added a number formatting setting to the options page for international currency systems. You can now choose the thousands separator, the decimal delimiter, and the number of decimal places. Also includes the Indian System.
+* Interest Rate field now corrects for poorly formatted input
+* Options page descriptions are improved and labels are shorter
 
 = 2.2.0 =
 

@@ -53,7 +53,7 @@ function lidd_mc_localize_script() {
 	$be = '</b>';
 	
 	wp_localize_script( 'lidd_mc', 'lidd_mc_script_vars', array(
-			'ta_error' => __( 'Please enter the total amount of the mortgage.', 'responsive-mortgage-calculator' ),
+			'ta_error' => __( 'Please enter the total amount.', 'responsive-mortgage-calculator' ),
 			'dp_error' => __( 'Please enter a down payment amount or leave blank.', 'responsive-mortgage-calculator' ),
 			'ir_error' => __( 'Please enter an interest rate.', 'responsive-mortgage-calculator' ),
 			'ap_error' => __( 'Please enter an amortization period.', 'responsive-mortgage-calculator' ),
@@ -66,6 +66,7 @@ function lidd_mc_localize_script() {
             'currency' => $options['currency'],
             'currency_code' => $options['currency_code'],
 			'currency_format' => $bs . $options['currency_format'] . $be,
+            'number_format' => $options['number_format'],
             'compounding_period' => $options['compounding_period'],
             'summary' => $options['summary'],
             'summary_interest' => $options['summary_interest'],

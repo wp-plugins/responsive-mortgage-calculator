@@ -28,6 +28,7 @@ return array(
 	'currency' => '$',
 	'currency_code' => null,
 	'currency_format' => '{currency}{amount} {code}',
+    'number_format' => 6,
 	'summary' => 1,
 	'summary_interest' => 1,
 	'summary_downpayment' => 1,
