@@ -21,9 +21,13 @@ function lidd_mc_detect_shortcode() {
 	$pattern = get_shortcode_regex();
 	
 	// Check the content.
-	return ( preg_match_all( '/' . $pattern . '/s', $post->post_content, $matches )
-		&& array_key_exists( 2, $matches ) 
-		&& ( in_array( 'mortgagecalculator', $matches[2] ) || in_array( 'rmc', $matches[2] ) )
+	return (
+        (   preg_match_all( '/' . $pattern . '/s', $post->post_content, $matches )
+		    && array_key_exists( 2, $matches ) 
+		    && ( in_array( 'mortgagecalculator', $matches[2] ) || in_array( 'rmc', $matches[2] ) )
+        ) || (
+            strpos( $post->post_content, 'lidd_mc_form' ) !== false
+        )
 	);
 }
 
