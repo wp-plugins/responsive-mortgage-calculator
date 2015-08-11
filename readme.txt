@@ -112,6 +112,7 @@ The calculator calculates interest semi-annually by default, but you can change 
 * Added a number formatting setting to the options page for international currency systems. You can now choose the thousands separator, the decimal delimiter, and the number of decimal places. Also includes the Indian System.
 * Interest Rate field now corrects for poorly formatted input
 * Options page descriptions are improved and labels are shorter
+* Shortcode detection includes form id detection, in case the post content is preprocessed by Visual Composer or other visual editing tools
 
 = 2.2.0 =
 
