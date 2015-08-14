@@ -69,7 +69,10 @@ jQuery(document).ready(function() {
 		
 		// Formatting function for currency codes
 		function validateCurrencyCode(code) {
-			return code.replace(/[^A-Za-z]/, "");
+            if ( code !== null ) {
+    			return code.replace(/[^A-Za-z]/, "");
+            }
+            return null;
 		}
 		
 		// Function to format internationalized currencies

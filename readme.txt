@@ -113,6 +113,7 @@ The calculator calculates interest semi-annually by default, but you can change 
 * Interest Rate field now corrects for poorly formatted input
 * Options page descriptions are improved and labels are shorter
 * Shortcode detection includes form id detection, in case the post content is preprocessed by Visual Composer or other visual editing tools
+* JavaScript currency code validation imporved
 
 = 2.2.0 =
 
