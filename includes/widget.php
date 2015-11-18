@@ -28,7 +28,7 @@ class lidd_mc_widget extends WP_Widget
 	/**
 	 * Constructor
 	 */
-	function lidd_mc_widget()
+	function __construct()
 	{
 		$widget_options = array(
 			'classname' => 'lidd_mc_widget',

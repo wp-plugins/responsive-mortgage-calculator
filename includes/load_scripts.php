@@ -19,8 +19,8 @@ function lidd_mc_detect_shortcode() {
 	global $post;
 	
 	// Check the content.
-    $rmc = preg_match( '/[rmc.*?]/i', $post->post_content );
-    $mortgagecalculator = preg_match( '/[mortgagecalculator.*?]/i', $post->post_content );
+    $rmc = preg_match( '/\[rmc.*?\]/i', $post->post_content );
+    $mortgagecalculator = preg_match( '/\[mortgagecalculator.*?\]/i', $post->post_content );
     
     return ( $rmc || $mortgagecalculator );
     
