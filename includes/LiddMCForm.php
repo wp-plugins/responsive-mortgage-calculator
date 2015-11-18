@@ -27,6 +27,12 @@ class LiddMCForm
 	 * @var string
 	 */
 	private $name;
+    
+    /**
+     * Store the submission processor
+     * @var object
+     */
+    private $processor;
 	
 	/**
 	 * Constructor.
@@ -40,8 +46,19 @@ class LiddMCForm
 	{
 		$this->name = $name;
 		$this->options = $options;
+        
+        $this->set_processor();
 	}
 	
+    /**
+     * Process submissions
+     */
+    private function set_processor()
+    {
+        include LIDD_MC_ROOT . 'includes/LiddMCProcessor.php';
+        $this->processor = new LiddMCProcessor( $this->options['compounding_period'] );
+    }
+    
 	/**
 	 * Return the form.
 	 *
@@ -82,7 +99,20 @@ class LiddMCForm
 		// Amortization period
 		$ap = $factory->newInput( 'text', 'lidd_mc_amortization_period' );
 		$ap->setLabel( $options['amortization_period_label'] );
-		$ap->setPlaceholder( __( 'years', 'responsive-mortgage-calculator' ) );
+        if ( isset( $options['amortization_period_units'] ) ) {
+            switch ( $options['amortization_period_units'] ) {
+                case 1:
+            		$ap->setPlaceholder( __( 'months', 'responsive-mortgage-calculator' ) );
+                    break;
+                case 0:
+                default:
+            		$ap->setPlaceholder( __( 'years', 'responsive-mortgage-calculator' ) );
+                    break;
+                    
+            }
+        } else {
+    		$ap->setPlaceholder( __( 'years', 'responsive-mortgage-calculator' ) );
+        }
 		$ap->setClass( $options['amortization_period_class'] );
 	
 		// Payment period
@@ -104,9 +134,34 @@ class LiddMCForm
 		$sub = $factory->newInput( 'submit', 'lidd_mc_submit' );
 		$sub->setValue( $options['submit_label'] );
 		$sub->setClass( $options['submit_class'] );
+        
+        // Set submitted data submission
+        if ( $this->processor->has_submission() ) {
+            
+            $ta->setValue( $this->processor->get( 'total_amount' ) );
+            $dp->setValue( $this->processor->get( 'down_payment' ) );
+            $ir->setValue( $this->processor->get( 'interest_rate' ) );
+            $ap->setValue( $this->processor->get( 'amortization_period' ) );
+            $pp->setValue( $this->processor->get( 'payment_period' ) );
+            
+            if ( $this->processor->has_error() ) {
+                
+                $localization = rmcp_get_localization();
+                $errors = $this->processor->get_errors();
+                
+                ( isset( $errors['total_amount'] ) ) && $ta->setError( $localization['ta_error'] );
+                ( isset( $errors['down_payment'] ) ) && $dp->setError( $localization['dp_error'] );
+                ( isset( $errors['interest_rate'] ) ) && $ir->setError( $localization['ir_error'] );
+                ( isset( $errors['amortization_period'] ) ) && $ap->setError( $localization['ap_error'] );
+            }
+        }
+        
+    	// Create a display area for results.
+    	$details = new LiddMCDetails( $options, $this->processor );
 		
 		// Build the form
-		$form = "<form action=\"http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]\" id=\"" . esc_attr( $this->name ) . "\" class=\"" . esc_attr( $this->name ) . "\" method=\"post\">";
+        $protocol = ( is_ssl() ) ? 'https://' : 'http://';
+		$form = "<form action=\"$protocol$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]#" . esc_attr( $this->name ) . "\" id=\"" . esc_attr( $this->name ) . "\" class=\"" . esc_attr( $this->name ) . "\" method=\"post\">";
 
 		$form .= $ta->getInput();
 		$form .= $dp->getInput();
@@ -116,6 +171,8 @@ class LiddMCForm
 		$form .= $sub->getInput();
 		
 		$form .= '</form>';
+        
+        $form .= $details->getDetails();
 		
 		return $form;
 	}

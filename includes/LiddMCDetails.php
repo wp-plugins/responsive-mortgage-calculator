@@ -27,7 +27,15 @@ class LiddMCDetails
 	 * @var string
 	 */
 	private $theme;
-	
+    
+    /**
+     * Store a reference to the processor
+     * @var object
+     */
+	private $processor;
+    
+    private $options;
+    
 	/**
 	 * Constructor.
 	 *
@@ -35,11 +43,15 @@ class LiddMCDetails
 	 *
 	 * @param  int     $summary_settings Determines whether the summary section will be included and how.
 	 * @param  string  $theme            Indicates the CSS theme.
+     * @param  object  $processor        The submission and calculation processor
 	 */
-	public function __construct( $summary_setting, $theme )
+	public function __construct( $options, $processor )
 	{
-		$this->summary_setting = in_array( $summary_setting, array( 0, 1, 2 ) ) ? $summary_setting : 1;
-		$this->theme = $theme;
+        $this->options   = $options;
+        $this->processor = $processor;
+        
+		$this->summary_setting  = in_array( $options['summary_setting'], array( 0, 1, 2 ) ) ? $options['summary_setting'] : 1;
+		$this->theme            = $options['theme'];
 	}
 	
 	/**
@@ -50,8 +62,11 @@ class LiddMCDetails
 	public function getDetails() {
 		
 		$details = '
-			<div id="lidd_mc_details" class="lidd_mc_details" style="display: none;">
-				<div id="lidd_mc_results" class="lidd_mc_results"></div>
+			<div id="lidd_mc_details" class="lidd_mc_details"';
+        if ( ! $this->processor->has_submission() || $this->processor->has_error() ) {
+            $details .= ' style="display: none;">';
+        }
+		$details .= '<div id="lidd_mc_results" class="lidd_mc_results">' . $this->getResult() . '</div>
 				';
 				
 		// Include the inspector if the summary is set to toggle
@@ -76,4 +91,118 @@ class LiddMCDetails
 			
 		return $details;
 	}
+    
+    private function getResult()
+    {
+        if ( ! $this->processor->has_submission() || $this->processor->has_error() ) {
+            return null;
+        }
+        
+        $localization = rmcp_get_localization();
+        
+        // Determine the correct phrase to use
+        $pp = $this->processor->get( 'payment_period' );
+        switch ( $pp ) {
+            case 52:
+                $phrase = $localization['weekly_payment'];
+                break;
+            case 26:
+                $phrase = $localization['biweekly_payment'];
+                break;
+            case 12:
+            default:
+                $phrase = $localization['monthly_payment'];
+                break;
+        }
+        
+        $amount = $this->formatAmount( $this->processor->get( 'payment_result' ) );
+        
+        return $phrase . ': ' . $amount;
+    }
+    
+    private function formatAmount( $amount )
+    {
+        $amount = $this->formatNumber( $amount, $this->options['number_format'] );
+        
+        $format = $this->options['currency_format'];
+        
+        if ( strpos( $format, '{amount}' ) ) {
+            $format = str_replace( '{amount}', $amount, $format );
+            $format = str_replace( '{code}', $this->options['currency_code'], $format );
+            $format = str_replace( '{currency}', $this->options['currency'], $format );
+        
+            return $format;
+        }
+        
+        return $amount;
+    }
+
+    private function formatNumber( $amount, $format ) {
+        switch ($format) {
+        case '1':
+            return number_format( $amount, 0, null, ' ');
+            break;
+        case '2':
+            return number_format( $amount, 2, '.', ' ');
+            break;
+        case '3':
+            return number_format( $amount, 3, '.', ' ');
+            break;
+        case '4':
+            return number_format( $amount, 0, null, ',');
+            break;
+        case '5':
+            return $this->formatIndianSystem( $amount );
+            break;
+        case '6':
+            return number_format( $amount, 2, '.', ',');
+            break;
+        case '7':
+            return number_format( $amount, 3, '.', ',');
+            break;
+        case '8':
+            return number_format( $amount, 0, null, '.');
+            break;
+        case '9':
+            return number_format( $amount, 2, ',', '.');
+            break;
+        case '10':
+            return number_format( $amount, 3, ',', '.');
+            break;
+        case '11':
+            return number_format( $amount, 2, '.', '\'');
+            break;
+        default:
+            return number_format( $amount, 2, '.', ',');
+            break;
+        }
+    }
+    
+    private function formatIndianSystem( $amount )
+    {
+        $amount = ceil( $amount );
+        
+        if ( strlen($amount) < 4 ) {
+            return $amount;
+        }
+        
+        $three = substr( $amount, -3 );
+        $start = substr( $amount, 0, -3 );
+        
+        $digit = null;
+        if ( ( strlen( $start ) % 2 ) != 0 ) {
+            $digit = substr( $start, 0, 1 );
+            $start = substr( $start, 1 );
+        }
+        $parts = str_split( $start, 2 );
+        
+        $amount = $digit;
+        
+        if ( $amount ) {
+            $amount .= ',';
+        }
+        
+        $amount .= implode( ',', $parts ) . ',' . $three;
+        return $amount;
+    }
 }

@@ -4,7 +4,7 @@ Donate link: http://liddweaver.com/donate/
 Tags: mortgage, mortgage calculator, loan, realty, realtor, real estate, widget, responsive, jquery
 Requires at least: 3.0.1
 Tested up to: 4.2
-Stable tag: 2.2.1
+Stable tag: 2.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,7 @@ __Plenty of Options__
 * Format currencies how you want with your own symbol, ISO code and number format.
 * Hide the down payment field.
 * Set a default interest rate.
+* Accept amortization period in months or years.
 * Set a fixed payment period.
 * Rename the input labels.
 * Add your own CSS classes.
@@ -97,7 +98,7 @@ Solve this problem by manually loading the scripts and styles. In the plugin fol
 
 = The calculated payment is off by a few dollars =
 
-The calculator calculates interest semi-annually by default, but you can change this on the settings page. Go to `Settings` > `Resp Mortgage Calculator` and change the setting ‘Compounding period for the mortgage interest’ to the correct period for your region. Monthly is a common period.
+The calculator calculates interest monthly by default, but you can change this on the settings page. Go to `Settings` > `Resp Mortgage Calculator` and change the setting ‘Compounding Period’ to the correct period for your region.
 
 == Screenshots ==
 
@@ -106,6 +107,22 @@ The calculator calculates interest semi-annually by default, but you can change 
 3. A longer summary of the mortgage details is displayed when the ‘inspector’ icon is clicked.
 
 == Changelog ==
+
+= 2.2.4 =
+
+* Detailed summary now has slide animation when toggle is clicked
+* Works over SSL
+* Now performs a basic calculation on the server and returns a payment if no JavaScript is available
+* Hopefully solved the nested shortcode issue that prevent JavaScript from loading with Visual Composer. Fingers crossed.
+
+= 2.2.3 =
+
+* Changed default compounding period to monthly
+* You can now set whether amortization period is in years or months
+
+= 2.2.2 =
+
+* Fixed a JavaScript bug where the {code} tag was being replace by “null” if there was no currency code
 
 = 2.2.1 =
 

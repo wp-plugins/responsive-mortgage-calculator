@@ -59,7 +59,14 @@ class LiddMCInput
 	 * @var int|null
 	 */
 	protected $css_layout = null;
-	
+
+	/**
+	 * Set error
+	 *
+	 * @var string
+	 */
+	protected $error = null;
+    
 	/**
 	 * Set the label.
 	 *
@@ -101,13 +108,27 @@ class LiddMCInput
 	}
 	
 	/**
+	 * Set error message.
+	 *
+	 * @param  string   $error   The error message.
+	 */
+	public function setError( $error )
+	{
+		$this->error = $error;
+	}
+	
+	/**
 	 * Get the error span for display.
 	 *
 	 * @return  string   The HTML for the error display span.
 	 */
 	protected function getError()
 	{
-		return '<span id="' . esc_attr( $this->name ) . '-error"></span>';
+		$error = '<span id="' . esc_attr( $this->name ) . '-error"';
+        $error .= ( $this->error ) ? ' class="lidd_mc_error"' : '';
+        $error .= '>' . $this->error . '</span>';
+        
+        return $error;
 	}
 	
 }

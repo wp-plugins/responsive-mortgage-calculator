@@ -33,5 +33,6 @@ return array(
 	'summary_interest' => 1,
 	'summary_downpayment' => 1,
 	'interest_rate_value' => null,
-    'payment_period' => 0
+    'payment_period' => 0,
+    'amortization_period_units' => 0
 );

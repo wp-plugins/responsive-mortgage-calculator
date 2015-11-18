@@ -30,9 +30,5 @@ function lidd_mc_display_form( $attr = array() ) {
 	
 	$output = $form->getForm();
 	
-	// Create a display area for results.
-	$details = new LiddMCDetails( $options['summary'], $options['theme'] );
-	$output .= $details->getDetails();
-	
 	return $output;
 }

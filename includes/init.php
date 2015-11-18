@@ -11,6 +11,7 @@
 defined('ABSPATH') or die("...");
 
 include ( LIDD_MC_ROOT . 'includes/LiddMCOptions.php' );
+include ( LIDD_MC_ROOT . 'includes/function-rmcp-get-localization.php' );
 include ( LIDD_MC_ROOT . 'includes/load_form.php' );
 include ( LIDD_MC_ROOT . 'includes/shortcode.php' );
 include ( LIDD_MC_ROOT . 'includes/widget.php' );

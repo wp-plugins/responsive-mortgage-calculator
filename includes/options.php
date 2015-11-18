@@ -53,6 +53,8 @@ function lidd_mc_admin_init() {
 	add_settings_field( 'lidd_mc_down_payment_visible', __( 'Down Payment', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_down_payment_visible', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Set a default interest rate
 	add_settings_field( 'lidd_mc_interest_rate_value', __( 'Interest Rate', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_interest_rate_value', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
+	// Set the base for the amortization period
+	add_settings_field( 'lidd_mc_amortization_period_units', __( 'Amortization Period Units', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_amortization_period_units', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 	// Set a fixed Payment Period (creates a hidden input with a set payment period)
 	add_settings_field( 'lidd_mc_fixed_payment_period', __( 'Payment Period', 'responsive-mortgage-calculator' ), 'lidd_mc_settings_fixed_payment_period', LIDD_MC_OPTIONS, 'lidd_mc_calcsettings' );
 
@@ -240,6 +242,17 @@ function lidd_mc_settings_interest_rate_value() {
 	lidd_mc_settings_text_input( 'interest_rate_value' );
 	echo " %";
     echo ' <p class="description">You can set a default interest rate, like 5.00, and it will automatically be filled in to the calculator. Or leave it blank.</p>';
+}
+/**
+ * Function to create amortization period units settings input.
+ */
+function lidd_mc_settings_amortization_period_units() {
+	$options = array(
+		'0' => __( 'Years', 'responsive-mortgage-calculator' ),
+		'1' => __( 'Months', 'responsive-mortgage-calculator' )
+	);
+	lidd_mc_settings_selectbox( 'amortization_period_units', $options );
+    echo ' <p class="description">Set whether the amortization period is calculated in years or months.</p>';
 }
 /**
  * Function to create fixed payment period settings input.
@@ -495,6 +508,21 @@ function lidd_mc_validate_options( $input ) {
 	} else {
 		$valid['interest_rate_value'] = null;
 	}
+    
+    // Amortization period units
+    if ( isset( $input['amortization_period_units'] ) ) {
+        switch ( $input['amortization_period_units'] ) {
+    		case '1':
+    			$valid['amortization_period_units'] = 1;
+    			break;
+    		case '0':
+    		default:
+    			$valid['amortization_period_units'] = 0;
+    			break;
+        }
+    } else {
+        $valid['amortization_period_units'] = 0;
+    }
 	
 	// Fixed payment period
 	if ( isset( $input['payment_period'] ) ) {
@@ -597,6 +625,8 @@ function lidd_mc_settings_page() {
 		);
 		
 		?></p>
+        <p>Need more features and flexibility? <a href="http://liddweaver.com/responsive-mortgage-calculator-pro/" target="_blank">Responsive Mortgage Calculator Pro</a> is coming.</p>
+        
 		
 		<form action="options.php" method="post">
 			<?php settings_fields( LIDD_MC_OPTIONS ); ?>

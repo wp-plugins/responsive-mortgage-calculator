@@ -72,7 +72,7 @@ jQuery(document).ready(function() {
             if ( code !== null ) {
     			return code.replace(/[^A-Za-z]/, "");
             }
-            return null;
+            return '';
 		}
 		
 		// Function to format internationalized currencies
@@ -93,6 +93,7 @@ jQuery(document).ready(function() {
 		var am = jQuery('#lidd_mc_amortization_period').val();
 		var pp = jQuery('#lidd_mc_payment_period option:selected' ).val();
 		var cp = lidd_mc_script_vars.compounding_period;
+        var au = lidd_mc_script_vars.amortization_period_units;
         
         // Currency format
 		var currency = lidd_mc_script_vars.currency;
@@ -109,10 +110,11 @@ jQuery(document).ready(function() {
 		var am_error = jQuery('#lidd_mc_amortization_period-error');
 		
         
-        // Strip non-numeric characters from the total, down payment, and interest rate
+        // Strip non-numeric characters from the total, down payment, interest rate, amortization period
         ta = ta.replace(/[^\d.]/g, '');
         dp = dp.replace(/[^\d.]/g, '');
         ir = ir.replace(/[^\d.]/g, '');
+        am = am.replace(/[^\d.]/g, '');
         
 		// Make sure the results divs are in their default states.
 		detailsDiv.hide();
@@ -172,8 +174,9 @@ jQuery(document).ready(function() {
 				break;
 		}
 		// Amortization period. 50 years is absurdly long, but meh...
-		if ( jQuery.isNumeric( +am ) && Math.abs(+am) < 51 && (+am) !== 0 ) {
+		if ( jQuery.isNumeric( +am ) && Math.abs(+am) < 120 && (+am) !== 0 ) {
 			// The amortization period needs to fit nicely with the payment periods if there are decimals.
+            if ( au == 1 ) am /= 12;
 			am = Math.abs( Math.ceil( (+am)*pp ) / pp );
 			removeError( am_error );
 		} else {
@@ -247,7 +250,12 @@ jQuery(document).ready(function() {
             if ( lidd_mc_script_vars.summary == 1 || lidd_mc_script_vars.summary == 2 ) {
     			var display_total = formatNumber( parseInt(ta - dp) );
     			if ( ( am - Math.floor(am) > 0 ) ) {
-    				var remainder = (np > pp) ? np % pp : pp % np;
+                    if ( am >= 1 ) {
+        				var remainder = (np > pp) ? np % pp : pp % np;
+                    }
+                    else {
+                        var remainder = np;
+                    }
     				if ( pp == 12 ) {
     					if ( remainder > 1 ) {
     						var summary = lidd_mc_script_vars.sym_text;
@@ -299,16 +307,10 @@ jQuery(document).ready(function() {
 
 			
     			// Show the summary div when the result div is clicked.
-    			if ( document.getElementById( 'lidd_mc_inspector' ) != null ) {
+    			if ( jQuery( '#lidd_mc_inspector' ).length ) {
 
     				jQuery('#lidd_mc_inspector').click(function() {
-    					if ( showSummary === false ) {
-    						summaryDiv.show();
-    						showSummary = true;
-    					} else {
-    						summaryDiv.hide();
-    						showSummary = false;
-    					}
+                        summaryDiv.slideToggle();
     				});
 				
     			}
