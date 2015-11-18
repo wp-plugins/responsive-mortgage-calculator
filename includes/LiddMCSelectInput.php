@@ -96,7 +96,11 @@ class LiddMCSelectInput extends LiddMCInputExtended
 	
 		// Create the options.
 		foreach ( $this->options as $k => $v ) {
-			$input .= '<option value="' . esc_attr( $k ) . '">' . esc_html( $v ) . '</option>';
+			$input .= '<option value="' . esc_attr( $k ) . '"';
+            if ( $k == $this->value ) {
+                $input .= ' selected';
+            }
+            $input .= '>' . esc_html( $v ) . '</option>';
 		}
 	
 		// Close the select box.
