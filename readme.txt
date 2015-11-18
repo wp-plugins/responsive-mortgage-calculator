@@ -112,8 +112,8 @@ The calculator calculates interest monthly by default, but you can change this o
 
 * Detailed summary now has slide animation when toggle is clicked
 * Works over SSL
-* Now performs a basic calculation on the server and returns a payment if no JavaScript is available
-* Hopefully solved the nested shortcode issue that prevent JavaScript from loading with Visual Composer. Fingers crossed.
+* Now performs a basic calculation on the server and returns a payment result if no JavaScript is available
+* Hopefully solved the nested shortcode issue that prevents JavaScript from loading with Visual Composer. Fingers crossed.
 
 = 2.2.3 =
 
