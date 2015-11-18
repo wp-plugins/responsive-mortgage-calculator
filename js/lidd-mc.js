@@ -100,6 +100,10 @@ jQuery(document).ready(function() {
 		var currency_code = validateCurrencyCode( lidd_mc_script_vars.currency_code );
 		var currency_format = lidd_mc_script_vars.currency_format;
 		var number_format = lidd_mc_script_vars.number_format;
+        
+        if ( currency_format.indexOf( '{amount}' ) == -1 ) {
+            currency_format = '{currency}{amount}';
+        }
 		currency_format = currency_format.replace( '{currency}', currency );
 		currency_format = currency_format.replace( '{code}', currency_code );
         

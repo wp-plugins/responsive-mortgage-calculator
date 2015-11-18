@@ -114,6 +114,7 @@ The calculator calculates interest monthly by default, but you can change this o
 * Works over SSL
 * Now performs a basic calculation on the server and returns a payment result if no JavaScript is available
 * Hopefully solved the nested shortcode issue that prevents JavaScript from loading with Visual Composer. Fingers crossed.
+* Default currency format added to JavaScript in case you upgrade from a version without having set the currency format in the settings page
 
 = 2.2.3 =
 
