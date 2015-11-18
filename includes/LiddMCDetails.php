@@ -50,7 +50,7 @@ class LiddMCDetails
         $this->options   = $options;
         $this->processor = $processor;
         
-		$this->summary_setting  = in_array( $options['summary_setting'], array( 0, 1, 2 ) ) ? $options['summary_setting'] : 1;
+		$this->summary_setting  = in_array( $options['summary'], array( 0, 1, 2 ) ) ? $options['summary'] : 1;
 		$this->theme            = $options['theme'];
 	}
 	
